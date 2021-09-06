@@ -1,0 +1,10 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation('net.devh:grpc-server-spring-boot-starter:2.12.0.RELEASE')
+    implementation(project(":springboot-grpc-interface"))
+    implementation('org.springframework.boot:spring-boot-starter-web:2.5.4')
+    testImplementation('org.springframework.boot:spring-boot-starter-test:2.5.4') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}

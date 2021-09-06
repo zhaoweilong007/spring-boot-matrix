@@ -1,0 +1,5 @@
+rootProject.name = 'spring-boot-matrix'
+include 'springboot-grpc-interface'
+include 'springboot-grpc-server'
+include 'springboot-grpc-client'
+include 'springboot-dubbo-interface'
