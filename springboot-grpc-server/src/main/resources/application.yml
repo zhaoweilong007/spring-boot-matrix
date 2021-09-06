@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: local-grpc-server
+server:
+  port: 8080
+  servlet:
+    context-path: /grpc
+grpc:
+  server:
+    port: 9090
+    enable-keep-alive: true
+    health-service-enabled: true
