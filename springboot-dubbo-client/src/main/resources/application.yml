@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: dubbo-client
+server:
+  port: 8082
+
