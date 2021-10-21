@@ -66,6 +66,7 @@ ext {
     druidVersion = '1.1.20'
     dynamicDatasource = '3.0.0'
     commonsMath3Version = '3.6.1'
+    springWebVersion = '2.5.4'
 }
 
 //子模块配置
@@ -76,6 +77,9 @@ subprojects {
 
     dependencyManagement {
         dependencies {
+            dependency "org.springframework.boot:spring-boot-starter-web:${springWebVersion}"
+            dependency "net.devh:grpc-client-spring-boot-starter:2.12.0.RELEASE"
+            dependency "org.apache.dubbo:dubbo-spring-boot-starter:2.7.8"
             dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
             dependency "com.baomidou:dynamic-datasource-spring-boot-starter:${dynamicDatasource}"
             dependency "com.alibaba:druid:${druidVersion}"

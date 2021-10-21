@@ -3,4 +3,10 @@ spring:
     name: dubbo-client
 server:
   port: 8082
-
+dubbo:
+  registry:
+    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+  application:
+    name: dubbo-client
+  consumer:
+    timeout: 1000
