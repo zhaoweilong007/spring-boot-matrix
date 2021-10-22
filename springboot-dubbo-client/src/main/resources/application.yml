@@ -10,3 +10,6 @@ dubbo:
     name: dubbo-client
   consumer:
     timeout: 1000
+  protocol:
+    name: dubbo
+    port: 20880
