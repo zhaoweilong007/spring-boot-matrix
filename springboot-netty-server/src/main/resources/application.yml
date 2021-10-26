@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: netty-server
+server:
+  port: 8087

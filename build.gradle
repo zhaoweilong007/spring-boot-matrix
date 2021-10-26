@@ -38,21 +38,6 @@ allprojects {
         options.encoding = 'UTF-8'
     }
 
-    repositories {
-        //本地仓库
-        mavenLocal()
-        //阿里云
-        maven {
-            url 'https://maven.aliyun.com/nexus/content/groups/public/'
-        }
-        //中央仓库
-        mavenCentral()
-        //gradle插件
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-
 }
 
 // 版本号
@@ -67,8 +52,9 @@ ext {
     dynamicDatasource = '3.0.0'
     commonsMath3Version = '3.6.1'
     springWebVersion = '2.5.4'
-    springBootDubboVersion="2.7.8"
-    springBootGrpcVersion="2.12.0.RELEASE"
+    springBootDubboVersion = "2.7.8"
+    springBootGrpcVersion = "2.12.0.RELEASE"
+    elasticSearchVersion = "2.5.6"
 }
 
 //子模块配置
@@ -79,6 +65,7 @@ subprojects {
 
     dependencyManagement {
         dependencies {
+            dependency "org.springframework.boot:spring-boot-starter-data-elasticsearch:${elasticSearchVersion}"
             dependency "org.springframework.boot:spring-boot-starter-web:${springWebVersion}"
             dependency "net.devh:grpc-client-spring-boot-starter:${springBootGrpcVersion}"
             dependency "net.devh:grpc-server-spring-boot-starter:${springBootGrpcVersion}"
@@ -95,7 +82,7 @@ subprojects {
         implementation "com.google.guava:guava:${guavaVersion}"
         implementation "com.google.code.gson:gson:${gsonVersion}"
         implementation "com.alibaba:fastjson:${fastjsonVersion}"
-        compileOnly "org.projectlombok:lombok:${lonbokVersion}"
+        implementation "org.projectlombok:lombok:${lonbokVersion}"
         annotationProcessor "org.projectlombok:lombok:${lonbokVersion}"
         testCompileOnly("junit:junit:4.13.2")
     }

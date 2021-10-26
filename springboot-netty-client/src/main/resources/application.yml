@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: netty-client
+
+server:
+  port: 8086
