@@ -1,12 +1,6 @@
 spring:
   application:
-    name: mongodb
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: demo
-      auto-index-creation: true
+    name: mutildatasource
   datasource:
     url: jdbc:mysql://localhost/demo?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -17,9 +11,6 @@ spring:
     hibernate:
       ddl-auto: none
     open-in-view: true
-server:
-  port: 8085
 
-logging:
-  level:
-    org.springframework.data.mongodb.core: debug
+server:
+  port: 8086

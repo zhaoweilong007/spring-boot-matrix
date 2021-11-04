@@ -1,20 +1,25 @@
 package com.zwl.entity;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author ZhaoWeiLong
- * @since 2021/10/28
+ * @since 2021/11/4
  **/
+@Entity
+@Table(name = "answer")
 @Data
-@Document(collection = "answer")
-public class Answer {
+public class AnswerEntity {
 
   @Id
-  private String id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "jdbc")
+  private Long id;
 
   /**
    * 话题id
@@ -67,5 +72,9 @@ public class Answer {
    */
   private Boolean isGodReplies;
 
+  /**
+   * 回答内容
+   */
+  private String content;
 
 }
