@@ -84,7 +84,6 @@ public class MongoDBTest {
   @Test
   public void crud() {
     log.info("answer count:{}", answerRepository.count());
-
     Iterable<AnswerEntity> all = answerDao.findAll();
     List<Answer> answers = Lists.newArrayList(all).stream()
         .map(answerEntity -> BeanUtil.copyProperties(answerEntity, Answer.class)).collect(

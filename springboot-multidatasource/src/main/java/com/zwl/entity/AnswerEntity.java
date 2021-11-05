@@ -1,5 +1,9 @@
 package com.zwl.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,10 +19,12 @@ import lombok.Data;
 @Entity
 @Table(name = "answer")
 @Data
-public class AnswerEntity {
+@TableName("answer")
+public class AnswerEntity implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "jdbc")
+  @TableId(type = IdType.AUTO)
   private Long id;
 
   /**

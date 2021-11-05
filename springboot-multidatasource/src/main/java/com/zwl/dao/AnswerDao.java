@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since 2021/11/4
  **/
 
-public interface AnswerDao extends JpaRepository<AnswerEntity, Long> {
+
+public interface AnswerDao extends JpaRepository<AnswerEntity, String> {
 
 }

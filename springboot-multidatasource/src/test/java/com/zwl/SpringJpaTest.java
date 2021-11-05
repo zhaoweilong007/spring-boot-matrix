@@ -1,7 +1,14 @@
 package com.zwl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.zwl.dao.AnswerDao;
+import com.zwl.dao.AnswerDao2;
+import com.zwl.entity.AnswerEntity;
+import com.zwl.service.AnswerService;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +27,32 @@ public class SpringJpaTest {
   @Autowired
   AnswerDao answerDao;
 
+  @Autowired
+  AnswerDao2 answerDao2;
+
+  @Autowired
+  AnswerService answerService;
+
   @Test
   public void test() {
-    System.out.println(answerDao.findById(1L));
+    AnswerEntity answerEntity = answerService.findByIdMaster(1);
+    log.info("query master db :{}", answerEntity);
+
+    AnswerEntity answer = answerService.findByIdSlave(1);
+    log.info("query slave_1 db:{}", answer);
+
+    Assert.assertNotEquals(answerEntity.getQuestion(), answer.getQuestion());
+
+    Wrapper<AnswerEntity> wrapper = new LambdaQueryWrapper<AnswerEntity>()
+        .like(AnswerEntity::getQuestion, "为什么");
+
+    List<AnswerEntity> master = answerService.findMaster(wrapper);
+
+    List<AnswerEntity> slave = answerService.findSlave(wrapper);
+
+    Assert.assertNotEquals(master.size(), slave.size());
+
+
   }
 
 }

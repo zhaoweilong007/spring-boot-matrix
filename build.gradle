@@ -48,9 +48,9 @@ ext {
     gsonVersion = '2.8.8'
     fastjsonVersion = '1.2.78'
     lonbokVersion = '1.18.20'
-    mybatisPlusVersion = '3.3.1.tmp'
-    druidVersion = '1.1.20'
-    dynamicDatasource = '3.0.0'
+    mybatisPlusVersion = '3.4.3.4'
+    druidVersion = '1.2.8'
+    dynamicDatasource = '3.4.1'
     commonsMath3Version = '3.6.1'
     springBootDubboVersion = "2.7.8"
     springBootGrpcVersion = "2.12.0.RELEASE"
@@ -75,8 +75,9 @@ subprojects {
             dependency "org.apache.dubbo:dubbo-spring-boot-starter:${springBootDubboVersion}"
             dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
             dependency "com.baomidou:dynamic-datasource-spring-boot-starter:${dynamicDatasource}"
-            dependency "com.alibaba:druid:${druidVersion}"
+            dependency "com.alibaba:druid-spring-boot-starter:${druidVersion}"
             dependency "org.apache.commons:commons-math3:${commonsMath3Version}"
+            dependency "mysql:mysql-connector-java:8.0.27"
         }
     }
 
