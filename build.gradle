@@ -66,6 +66,7 @@ subprojects {
 
     dependencyManagement {
         dependencies {
+            dependency "org.apache.shardingsphere:shardingsphere-jdbc-core-spring-boot-starter:5.0.0-beta"
             dependency "org.springframework.boot:spring-boot-starter-data-jpa:${springbootStarterVersion}"
             dependency "org.springframework.boot:spring-boot-starter-data-mongodb:${springbootStarterVersion}"
             dependency "org.springframework.boot:spring-boot-starter-data-elasticsearch:${springbootStarterVersion}"

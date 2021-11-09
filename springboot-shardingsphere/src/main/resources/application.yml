@@ -1,0 +1,71 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: shardingSphere
+  shardingsphere:
+    props:
+      sql-show: true
+      sql-simple: true
+      executor-size: 200
+      check-table-metadata-enabled: true
+    enabled: true
+    datasource:
+      names: db0,db1
+      db0:
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbc-url: jdbc:mysql://localhost:3306/db0?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: 123456
+      db1:
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbc-url: jdbc:mysql://localhost:3306/db1?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: 123456
+    rules:
+      sharding:
+        #分片算法
+        sharding-algorithms:
+          table-inline:
+            type: INLINE
+            props:
+              algorithm-expression: answer_$->{answer_id % 2}
+          db-inline:
+            type: INLINE
+            props:
+              algorithm-expression: db$->{topic_id % 2}
+        # 主键生成策略
+        keyGenerators:
+          snowflake:
+            #雪花算法
+            type: SNOWFLAKE
+            props:
+              worker-id: 123
+        tables:
+          # 配置answer表
+          answer:
+            #数据节点行表达式
+            actual-data-nodes: db$->{0..1}.answer_$->{0..1}
+            # 分库策略
+            database-strategy:
+              standard:
+                sharding-algorithm-name: db-inline
+                sharding-column: topic_id
+            # 主键序列化策略
+            keyGenerateStrategy:
+              column: id
+              keyGeneratorName: snowflake
+            # 分表策略
+            table-strategy:
+              standard:
+                sharding-algorithm-name: table-inline
+                sharding-column: answer_id
+mybatis-plus:
+  configuration:
+    call-setters-on-nulls: true
+  check-config-location: false
+  type-aliases-package: com.zwl.entity
+  mapper-locations: classpath:/mapper/*.xml

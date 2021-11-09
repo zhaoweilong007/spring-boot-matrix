@@ -11,3 +11,5 @@ include 'springboot-netty-server'
 include 'springboot-netty-client'
 include 'springboot-netty-common'
 include 'springboot-multidatasource'
+include 'springboot-shardingsphere'
+

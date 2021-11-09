@@ -1,0 +1,9 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation "org.apache.shardingsphere:shardingsphere-jdbc-core-spring-boot-starter"
+    implementation ("mysql:mysql-connector-java")
+    implementation ("com.baomidou:mybatis-plus-boot-starter")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
