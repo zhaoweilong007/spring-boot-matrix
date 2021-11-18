@@ -5,6 +5,7 @@ import com.zwl.model.Packet;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ import java.util.Map;
  *
  * @author ZhaoWeiLong
  * @since 2021/8/20
- **/
+ */
 @Sharable
 public class IMHandler extends SimpleChannelInboundHandler<Packet> {
 
@@ -36,12 +37,11 @@ public class IMHandler extends SimpleChannelInboundHandler<Packet> {
     handlerMap.put(Command.GROUP_MESSAGE_RESPONSE.getCode(), GroupMessageRespHandler.INSTANCE);
   }
 
-
   @Override
   protected void channelRead0(ChannelHandlerContext channelHandlerContext, Packet packet)
       throws Exception {
-    SimpleChannelInboundHandler<? extends Packet> handler = handlerMap.get(
-        packet.getCommand().intValue());
+    SimpleChannelInboundHandler<? extends Packet> handler =
+        handlerMap.get(packet.getCommand().intValue());
     handler.channelRead(channelHandlerContext, packet);
   }
 }

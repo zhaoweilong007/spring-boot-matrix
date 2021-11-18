@@ -2,15 +2,16 @@ package com.zwl.command;
 
 import com.zwl.model.JoinGroupReqPacket;
 import io.netty.channel.Channel;
-import java.util.Arrays;
-import java.util.Scanner;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * @author ZhaoWeiLong
  * @since 2021/8/19
- **/
+ */
 @Slf4j
 @Component("joinGroup")
 public class JoinGroupCommand implements ConsoleCommand {

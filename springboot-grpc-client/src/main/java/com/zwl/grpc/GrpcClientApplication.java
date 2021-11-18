@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author ZhaoWeiLong
  * @since 2021/9/2
- **/
+ */
 @SpringBootApplication
 public class GrpcClientApplication {
 

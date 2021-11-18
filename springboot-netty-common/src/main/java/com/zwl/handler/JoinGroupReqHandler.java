@@ -10,24 +10,25 @@ import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
-import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
 
 /**
  * @author ZhaoWeiLong
  * @since 2021/8/19
- **/
+ */
 @Slf4j
 @Sharable
 public class JoinGroupReqHandler extends SimpleChannelInboundHandler<JoinGroupReqPacket> {
 
   public static final JoinGroupReqHandler INSTANCE = new JoinGroupReqHandler();
 
-
   @Override
-  protected void channelRead0(ChannelHandlerContext channelHandlerContext,
-      JoinGroupReqPacket joinGroupReqPacket) throws Exception {
-    log.info("【拉人群聊】，data:{}",joinGroupReqPacket);
+  protected void channelRead0(
+      ChannelHandlerContext channelHandlerContext, JoinGroupReqPacket joinGroupReqPacket)
+      throws Exception {
+    log.info("【拉人群聊】，data:{}", joinGroupReqPacket);
     String groupId = joinGroupReqPacket.getGroupId();
     List<String> userIds = joinGroupReqPacket.getUserIds();
     ChannelGroup groupMap = LogUtils.getGroupMap(groupId);
@@ -54,8 +55,11 @@ public class JoinGroupReqHandler extends SimpleChannelInboundHandler<JoinGroupRe
   }
 
   private void sendMsg(Channel channel, String userName, String groupId) {
-    ResultRespPacket<Object> respPacket = ResultRespPacket.builder().success(true)
-        .msg(StrUtil.format("你被{}邀请加入群聊，群聊id:{}", userName, groupId)).build();
+    ResultRespPacket<Object> respPacket =
+        ResultRespPacket.builder()
+            .success(true)
+            .msg(StrUtil.format("你被{}邀请加入群聊，群聊id:{}", userName, groupId))
+            .build();
     channel.writeAndFlush(respPacket);
   }
 }

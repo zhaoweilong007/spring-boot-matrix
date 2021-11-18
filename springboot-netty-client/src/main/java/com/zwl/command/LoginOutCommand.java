@@ -3,16 +3,17 @@ package com.zwl.command;
 import com.zwl.model.LoginOutRequestPacket;
 import com.zwl.utils.LogUtils;
 import io.netty.channel.Channel;
-import java.util.Scanner;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import java.util.Scanner;
 
 /**
  * 登出指令
  *
  * @author ZhaoWeiLong
  * @since 2021/8/19
- **/
+ */
 @Slf4j
 @Component("logout")
 public class LoginOutCommand implements ConsoleCommand {

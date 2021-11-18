@@ -5,9 +5,8 @@ package com.zwl.serialize;
  *
  * @author ZhaoWeiLong
  * @since 2021/7/27
- **/
+ */
 public interface Serializer {
-
 
   Serializer DEFAULT = new JsonSerializerImpl();
 
@@ -21,7 +20,6 @@ public interface Serializer {
    */
   byte[] serialize(Object obj);
 
-
   /**
    * 反序列化
    *
@@ -30,5 +28,4 @@ public interface Serializer {
    * @return 对象
    */
   <T> T deSerialize(byte[] bytes, Class<T> clazz);
-
 }

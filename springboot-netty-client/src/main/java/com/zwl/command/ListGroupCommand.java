@@ -2,14 +2,15 @@ package com.zwl.command;
 
 import com.zwl.model.ListGroupReqPacket;
 import io.netty.channel.Channel;
-import java.util.Scanner;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import java.util.Scanner;
 
 /**
  * @author ZhaoWeiLong
  * @since 2021/8/19
- **/
+ */
 @Slf4j
 @Component("listGroup")
 public class ListGroupCommand implements ConsoleCommand {

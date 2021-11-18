@@ -8,7 +8,7 @@ import lombok.Data;
  *
  * @author ZhaoWeiLong
  * @since 2021/8/18
- **/
+ */
 @Data
 @AllArgsConstructor
 public class Session {
@@ -16,5 +16,4 @@ public class Session {
   private String userId;
 
   private String userName;
-
 }

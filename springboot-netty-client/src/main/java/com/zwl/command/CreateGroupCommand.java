@@ -2,18 +2,19 @@ package com.zwl.command;
 
 import com.zwl.model.CreateGroupRequestPacket;
 import io.netty.channel.Channel;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 /**
  * 创建群聊指令
  *
  * @author ZhaoWeiLong
  * @since 2021/8/19
- **/
+ */
 @Slf4j
 @Component("createGroup")
 public class CreateGroupCommand implements ConsoleCommand {

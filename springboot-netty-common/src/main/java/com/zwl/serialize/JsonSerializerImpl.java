@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSON;
  *
  * @author ZhaoWeiLong
  * @since 2021/7/27
- **/
+ */
 public class JsonSerializerImpl implements Serializer {
 
   @Override

@@ -3,14 +3,15 @@ package com.zwl.command;
 import com.zwl.model.LoginRequestPacket;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Scanner;
 import java.util.UUID;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author ZhaoWeiLong
  * @since 2021/8/20
- **/
+ */
 @Slf4j
 public class LoginCommand implements ConsoleCommand {
 
@@ -22,7 +23,6 @@ public class LoginCommand implements ConsoleCommand {
       e.printStackTrace();
     }
   }
-
 
   /**
    * 登录
@@ -40,8 +40,7 @@ public class LoginCommand implements ConsoleCommand {
     loginRequestPacket.setUserId(UUID.randomUUID().toString().replace("-", ""));
     loginRequestPacket.setUserName(username);
     loginRequestPacket.setPassword(pwd);
-    ChannelFuture channelFuture = channel
-        .writeAndFlush(loginRequestPacket);
+    ChannelFuture channelFuture = channel.writeAndFlush(loginRequestPacket);
     channelFuture.sync();
     if (!channelFuture.isSuccess()) {
       login(channel);

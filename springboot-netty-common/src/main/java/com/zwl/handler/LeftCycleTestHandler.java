@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @author ZhaoWeiLong
  * @since 2021/8/18
- **/
+ */
 @Slf4j
 public class LeftCycleTestHandler extends ChannelInboundHandlerAdapter {
 

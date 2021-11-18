@@ -7,6 +7,7 @@ import com.zwl.serialize.Serializer;
 import com.zwl.serialize.SerializerAlgorithm;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -14,16 +15,14 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author ZhaoWeiLong
  * @since 2021/7/27
- **/
+ */
 public class PacketCode {
 
-
-  /**
-   * 魔数
-   */
+  /** 魔数 */
   public static final int MAGIC_NUMS = 0x12345678;
 
   public static ConcurrentHashMap<Byte, Serializer> serializerMap = new ConcurrentHashMap<>();
+
   static {
     serializerMap.put(SerializerAlgorithm.JSON, new JsonSerializerImpl());
   }
@@ -37,7 +36,7 @@ public class PacketCode {
   public static ByteBuf encode(Packet packet) {
     ByteBuf byteBuf = ByteBufAllocator.DEFAULT.ioBuffer();
     byte[] bytes = Serializer.DEFAULT.serialize(packet);
-    //数据包由五部分组成 魔数、版本号、序列化算法、指令、数据长度、数据内容
+    // 数据包由五部分组成 魔数、版本号、序列化算法、指令、数据长度、数据内容
     byteBuf.writeInt(MAGIC_NUMS);
     byteBuf.writeByte(packet.getVersion());
     byteBuf.writeByte(Serializer.DEFAULT.getSerializerAlgorithm());
@@ -49,7 +48,7 @@ public class PacketCode {
 
   public static ByteBuf encode(ByteBuf byteBuf, Packet packet) {
     byte[] bytes = Serializer.DEFAULT.serialize(packet);
-    //数据包由五部分组成 魔数、版本号、序列化算法、指令、数据长度、数据内容
+    // 数据包由五部分组成 魔数、版本号、序列化算法、指令、数据长度、数据内容
     byteBuf.writeInt(MAGIC_NUMS);
     byteBuf.writeByte(packet.getVersion());
     byteBuf.writeByte(Serializer.DEFAULT.getSerializerAlgorithm());
@@ -59,7 +58,6 @@ public class PacketCode {
     return byteBuf;
   }
 
-
   /**
    * 解码
    *
@@ -68,13 +66,13 @@ public class PacketCode {
    */
   public static Packet decode(ByteBuf byteBuf) {
     byteBuf.skipBytes(5);
-    //算法
+    // 算法
     byte algorithm = byteBuf.readByte();
-    //指令
+    // 指令
     byte command = byteBuf.readByte();
-    //数据长度
+    // 数据长度
     int length = byteBuf.readInt();
-    //数据内容
+    // 数据内容
     byte[] bytes = new byte[length];
     byteBuf.readBytes(bytes);
 
@@ -87,14 +85,11 @@ public class PacketCode {
     return null;
   }
 
-
-  /**
-   * @return 获取请求类型
-   */
+  /** @return 获取请求类型 */
   private static Class<? extends Packet> getRequestType(byte command) {
     Command[] values = Command.values();
     for (Command val : values) {
-      if (val.getCode().byteValue()==command) {
+      if (val.getCode().byteValue() == command) {
         return val.getClazz();
       }
     }
@@ -104,6 +99,4 @@ public class PacketCode {
   private static Serializer getSerializer(byte serialize) {
     return serializerMap.get(serialize);
   }
-
-
 }

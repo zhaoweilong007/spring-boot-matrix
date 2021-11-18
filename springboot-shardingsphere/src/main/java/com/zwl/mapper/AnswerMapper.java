@@ -7,8 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * @author ZhaoWeiLong
  * @since 2021/11/9
- **/
+ */
 @Mapper
-public interface AnswerMapper extends BaseMapper<Answer> {
-
-}
+public interface AnswerMapper extends BaseMapper<Answer> {}

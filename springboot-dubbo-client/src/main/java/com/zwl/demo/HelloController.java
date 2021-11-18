@@ -3,12 +3,13 @@ package com.zwl.demo;
 import com.zwl.Service.GreetingService;
 import com.zwl.Service.HelloService;
 import com.zwl.constant.DubboVersion;
-import java.util.concurrent.CompletableFuture;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * @author ZhaoWeiLong

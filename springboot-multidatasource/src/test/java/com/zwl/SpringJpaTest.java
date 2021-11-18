@@ -6,7 +6,6 @@ import com.zwl.dao.AnswerDao;
 import com.zwl.dao.AnswerDao2;
 import com.zwl.entity.AnswerEntity;
 import com.zwl.service.AnswerService;
-import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,23 +14,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 /**
  * @author ZhaoWeiLong
  * @since 2021/11/4
- **/
+ */
 @SpringBootTest(classes = MultiDataSourceApp.class)
 @RunWith(SpringRunner.class)
 @Slf4j
 public class SpringJpaTest {
 
-  @Autowired
-  AnswerDao answerDao;
+  @Autowired AnswerDao answerDao;
 
-  @Autowired
-  AnswerDao2 answerDao2;
+  @Autowired AnswerDao2 answerDao2;
 
-  @Autowired
-  AnswerService answerService;
+  @Autowired AnswerService answerService;
 
   @Test
   public void test() {
@@ -43,16 +41,13 @@ public class SpringJpaTest {
 
     Assert.assertNotEquals(answerEntity.getQuestion(), answer.getQuestion());
 
-    Wrapper<AnswerEntity> wrapper = new LambdaQueryWrapper<AnswerEntity>()
-        .like(AnswerEntity::getQuestion, "为什么");
+    Wrapper<AnswerEntity> wrapper =
+        new LambdaQueryWrapper<AnswerEntity>().like(AnswerEntity::getQuestion, "为什么");
 
     List<AnswerEntity> master = answerService.findMaster(wrapper);
 
     List<AnswerEntity> slave = answerService.findSlave(wrapper);
 
     Assert.assertNotEquals(master.size(), slave.size());
-
-
   }
-
 }

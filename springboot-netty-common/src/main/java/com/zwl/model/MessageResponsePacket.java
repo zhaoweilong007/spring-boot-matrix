@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 /**
  * @author ZhaoWeiLong
  * @since 2021/8/16
- **/
+ */
 @EqualsAndHashCode(callSuper = false)
 @Data
 @AllArgsConstructor

@@ -1,6 +1,5 @@
 package com.zwl.handler;
 
-
 import com.zwl.model.Attributes;
 import com.zwl.model.LoginOutRequestPacket;
 import com.zwl.utils.LogUtils;
@@ -14,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @author ZhaoWeiLong
  * @since 2021/8/19
- **/
+ */
 @Slf4j
 @Sharable
 public class LoginOutRequestHandler extends SimpleChannelInboundHandler<LoginOutRequestPacket> {
@@ -22,8 +21,9 @@ public class LoginOutRequestHandler extends SimpleChannelInboundHandler<LoginOut
   public static final LoginOutRequestHandler INSTANCE = new LoginOutRequestHandler();
 
   @Override
-  protected void channelRead0(ChannelHandlerContext channelHandlerContext,
-      LoginOutRequestPacket loginOutRequestPacket) throws Exception {
+  protected void channelRead0(
+      ChannelHandlerContext channelHandlerContext, LoginOutRequestPacket loginOutRequestPacket)
+      throws Exception {
     LogUtils.unBindSession(channelHandlerContext.channel());
     channelHandlerContext.channel().attr(Attributes.LOGIN).set(null);
     channelHandlerContext.channel().close();

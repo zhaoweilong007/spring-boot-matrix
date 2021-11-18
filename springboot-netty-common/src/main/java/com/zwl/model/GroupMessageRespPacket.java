@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
  *
  * @author ZhaoWeiLong
  * @since 2021/8/20
- **/
+ */
 @EqualsAndHashCode(callSuper = false)
 @Data
 public class GroupMessageRespPacket extends Packet {

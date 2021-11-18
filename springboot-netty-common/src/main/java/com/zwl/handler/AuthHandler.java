@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @author ZhaoWeiLong
  * @since 2021/8/18
- **/
+ */
 @Slf4j
 @Sharable
 public class AuthHandler extends ChannelInboundHandlerAdapter {
@@ -29,5 +29,4 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
       ctx.channel().close();
     }
   }
-
 }

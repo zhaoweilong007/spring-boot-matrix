@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.5.4'
+        springBootVersion = '2.5.6'
     }
     repositories {
         //本地仓库
@@ -20,25 +20,10 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
-
-plugins {
-    id 'java'
-    id 'org.springframework.boot' version '2.5.4' apply false
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
-}
-
-
 //所有项目配置
 allprojects {
     group = 'com.zwl'
     version = '0.0.1-SNAPSHOT'
-
-    compileJava {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-        options.encoding = 'UTF-8'
-    }
-
 }
 
 // 版本号
@@ -52,9 +37,11 @@ ext {
     druidVersion = '1.2.8'
     dynamicDatasource = '3.4.1'
     commonsMath3Version = '3.6.1'
-    springBootDubboVersion = "2.7.8"
+    springBootDubboVersion = "2.7.14"
     springBootGrpcVersion = "2.12.0.RELEASE"
     springbootStarterVersion = "2.5.6"
+    springCloudAlibabaVersion = '2.2.6.RELEASE'
+    springCloudVersion = '2020.0.0'
 }
 
 //子模块配置
@@ -62,10 +49,12 @@ subprojects {
     apply plugin: 'idea'
     apply plugin: 'java'
     apply plugin: 'java-library'
+    apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
     dependencyManagement {
         dependencies {
+            dependency 'io.seata:seata-spring-boot-starter:1.4.2'
             dependency "org.apache.shardingsphere:shardingsphere-jdbc-core-spring-boot-starter:5.0.0-beta"
             dependency "org.springframework.boot:spring-boot-starter-data-jpa:${springbootStarterVersion}"
             dependency "org.springframework.boot:spring-boot-starter-data-mongodb:${springbootStarterVersion}"

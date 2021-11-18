@@ -1,5 +1,3 @@
-apply plugin: 'org.springframework.boot'
-
 dependencies {
     implementation('net.devh:grpc-server-spring-boot-starter')
     implementation(project(":springboot-grpc-interface"))

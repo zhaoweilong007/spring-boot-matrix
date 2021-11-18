@@ -2,16 +2,17 @@ package com.zwl.command;
 
 import com.zwl.model.MessageRequestPacket;
 import io.netty.channel.Channel;
-import java.util.Scanner;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import java.util.Scanner;
 
 /**
  * 发送消息给用户
  *
  * @author ZhaoWeiLong
  * @since 2021/8/19
- **/
+ */
 @Slf4j
 @Component("sendToUser")
 public class SendToUserCommand implements ConsoleCommand {

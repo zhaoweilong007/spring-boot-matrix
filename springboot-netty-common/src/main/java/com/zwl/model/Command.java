@@ -8,43 +8,31 @@ import lombok.Getter;
  *
  * @author ZhaoWeiLong
  * @since 2021/7/27
- **/
+ */
 @Getter
 @AllArgsConstructor
 public enum Command {
 
-  /**
-   * 登录请求
-   */
+  /** 登录请求 */
   LOGIN_REQUEST(1, LoginRequestPacket.class),
 
-  /**
-   * 登录响应
-   */
+  /** 登录响应 */
   LOGIN_RESPONSE(2, LoginRespPacket.class),
 
   LOGIN_OUT_REQUEST(3, LoginOutRequestPacket.class),
 
   LOGIN_OUT_RESPONSE(4, LoginOutRequestPacket.class),
 
-  /**
-   * 消息请求
-   */
+  /** 消息请求 */
   MESSAGE_REQUEST(5, MessageRequestPacket.class),
 
-  /**
-   * 消息响应
-   */
+  /** 消息响应 */
   MESSAGE_RESPONSE(6, MessageResponsePacket.class),
 
-  /**
-   * 创建群聊请求
-   */
+  /** 创建群聊请求 */
   CREATE_GROUP_REQUEST(7, CreateGroupRequestPacket.class),
 
-  /**
-   * 创建群聊响应
-   */
+  /** 创建群聊响应 */
   CREATE_GROUP_RESPONSE(8, CreateGroupRespPacket.class),
 
   JOIN_GROUP_REQUEST(9, JoinGroupReqPacket.class),
@@ -68,7 +56,6 @@ public enum Command {
   HEART_BEAT_REQUEST(17, HeartBeatRequestPacket.class),
 
   HEART_BEAT_RESPONSE(18, HeartBeatRespPacket.class);
-
 
   private final Integer code;
   private final Class<? extends Packet> clazz;

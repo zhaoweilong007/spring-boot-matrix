@@ -8,9 +8,6 @@ import org.springframework.stereotype.Service;
 /**
  * @author ZhaoWeiLong
  * @since 2021/11/9
- **/
+ */
 @Service
-public class AnswerServiceImpl extends ServiceImpl<AnswerMapper, Answer> implements AnswerService {
-
-
-}
+public class AnswerServiceImpl extends ServiceImpl<AnswerMapper, Answer> implements AnswerService {}

@@ -2,14 +2,15 @@ package com.zwl.command;
 
 import com.zwl.model.GroupMessageReqPacket;
 import io.netty.channel.Channel;
-import java.util.Scanner;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import java.util.Scanner;
 
 /**
  * @author ZhaoWeiLong
  * @since 2021/8/20
- **/
+ */
 @Slf4j
 @Component("groupMsg")
 public class GroupMessageCommand implements ConsoleCommand {

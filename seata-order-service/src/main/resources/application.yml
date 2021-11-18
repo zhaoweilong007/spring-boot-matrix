@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/seata_order?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+server:
+  port: 8090
+#dubbo配置
+dubbo:
+  application:
+    name: ${spring.application.name}
+  registry:
+    address: nacos://${nacos.addr:127.0.0.1:8848}
+    username: nacos
+    password: nacos
+  protocol:
+    name: dubbo
+    port: -1
+  provider:
+    timeout: 1000
+    token: true
+  consumer:
+    timeout: 1000
+
+
+#seata配置
+seata:
+  enabled: true
+  data-source-proxy-mode: AT
+  enable-auto-data-source-proxy: true
+  application-id: ${spring.application.name}
+  tx-service-group: ${spring.application.name}-group
+  service:
+    vgroup-mapping:
+      order-service-group: default
+    grouplist:
+      default: 127.0.0.1:8091
+  registry:
+    type: nacos
+    nacos:
+      cluster: default
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      namespace: "seata"
+      group: "SEATA_GROUP"
+      username: "nacos"
+      password: "nacos"

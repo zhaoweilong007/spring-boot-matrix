@@ -12,4 +12,7 @@ include 'springboot-netty-client'
 include 'springboot-netty-common'
 include 'springboot-multidatasource'
 include 'springboot-shardingsphere'
-
+include 'seata-storage-service'
+include 'seata-order-service'
+include 'seata-account-service'
+include 'seata-dubbo-interface'

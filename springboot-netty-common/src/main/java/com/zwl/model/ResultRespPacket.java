@@ -1,16 +1,13 @@
 package com.zwl.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * 统一响应
+ *
  * @author ZhaoWeiLong
  * @since 2021/8/20
- **/
+ */
 @EqualsAndHashCode(callSuper = false)
 @Data
 @AllArgsConstructor
@@ -28,6 +25,4 @@ public class ResultRespPacket<T> extends Packet {
   public Byte getCommand() {
     return Command.RESULT_RESPONSE.getCode().byteValue();
   }
-
-
 }

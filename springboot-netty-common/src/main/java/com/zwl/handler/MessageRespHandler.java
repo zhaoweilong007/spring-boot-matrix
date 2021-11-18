@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @author ZhaoWeiLong
  * @since 2021/8/17
- **/
+ */
 @Slf4j
 @Sharable
 public class MessageRespHandler extends SimpleChannelInboundHandler<MessageResponsePacket> {
@@ -19,8 +19,9 @@ public class MessageRespHandler extends SimpleChannelInboundHandler<MessageRespo
   public static final MessageRespHandler INSTANCE = new MessageRespHandler();
 
   @Override
-  protected void channelRead0(ChannelHandlerContext channelHandlerContext,
-      MessageResponsePacket msg) {
-    log.info("[收到消息] 【{}】:【{}】 -> {}", msg.getFromUserName(), msg.getFromUserId(), msg.getMessage());
+  protected void channelRead0(
+      ChannelHandlerContext channelHandlerContext, MessageResponsePacket msg) {
+    log.info(
+        "[收到消息] 【{}】:【{}】 -> {}", msg.getFromUserName(), msg.getFromUserId(), msg.getMessage());
   }
 }

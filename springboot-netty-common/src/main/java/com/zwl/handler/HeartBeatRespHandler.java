@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author ZhaoWeiLong
  * @since 2021/8/20
- **/
+ */
 @Slf4j
 @Sharable
 public class HeartBeatRespHandler extends SimpleChannelInboundHandler<HeartBeatRespPacket> {
@@ -17,8 +17,9 @@ public class HeartBeatRespHandler extends SimpleChannelInboundHandler<HeartBeatR
   public static final HeartBeatRespHandler INSTANCE = new HeartBeatRespHandler();
 
   @Override
-  protected void channelRead0(ChannelHandlerContext channelHandlerContext,
-      HeartBeatRespPacket respPacket) throws Exception {
+  protected void channelRead0(
+      ChannelHandlerContext channelHandlerContext, HeartBeatRespPacket respPacket)
+      throws Exception {
     log.debug("============收到心跳包响应===============");
   }
 }

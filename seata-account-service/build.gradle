@@ -1,0 +1,10 @@
+dependencies {
+    implementation(project(":seata-dubbo-interface"))
+    implementation("com.baomidou:mybatis-plus-boot-starter")
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation("mysql:mysql-connector-java")
+    implementation 'org.apache.dubbo:dubbo-spring-boot-starter'
+    implementation 'org.apache.dubbo:dubbo-registry-nacos:2.7.14'
+    implementation 'io.seata:seata-spring-boot-starter'
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}

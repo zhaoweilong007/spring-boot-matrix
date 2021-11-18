@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author ZhaoWeiLong
  * @since 2021/8/20
- **/
+ */
 @Slf4j
 @Sharable
 public class GroupMessageRespHandler extends SimpleChannelInboundHandler<GroupMessageRespPacket> {
@@ -17,12 +17,13 @@ public class GroupMessageRespHandler extends SimpleChannelInboundHandler<GroupMe
   public static final GroupMessageRespHandler INSTANCE = new GroupMessageRespHandler();
 
   @Override
-  protected void channelRead0(ChannelHandlerContext ctx,
-      GroupMessageRespPacket packet) throws Exception {
-    log.info("[群聊消息]:groupId:【{}】-【{}】:【{}】 -> {}",
+  protected void channelRead0(ChannelHandlerContext ctx, GroupMessageRespPacket packet)
+      throws Exception {
+    log.info(
+        "[群聊消息]:groupId:【{}】-【{}】:【{}】 -> {}",
         packet.getGroupId(),
         packet.getFromUser().getUserName(),
-        packet.getFromUser().getUserId(), packet.getMessage());
-
+        packet.getFromUser().getUserId(),
+        packet.getMessage());
   }
 }

@@ -3,20 +3,21 @@ package com.zwl.handler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.handler.timeout.IdleStateHandler;
-import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * 服务器空闲检测
  *
  * @author ZhaoWeiLong
  * @since 2021/8/20
- **/
+ */
 @Slf4j
 public class IMIdleStateHandler extends IdleStateHandler {
 
   public IMIdleStateHandler() {
-    //读空闲时间，写空闲时间，读写空闲时间，只要在一定时间内没有产生数据读写，就认为连接假死
+    // 读空闲时间，写空闲时间，读写空闲时间，只要在一定时间内没有产生数据读写，就认为连接假死
     super(30, 0, 0, TimeUnit.SECONDS);
   }
 

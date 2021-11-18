@@ -5,9 +5,10 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 加入群聊响应
+ *
  * @author ZhaoWeiLong
  * @since 2021/8/19
- **/
+ */
 @EqualsAndHashCode(callSuper = false)
 @Data
 public class JoinGroupRespPacket extends Packet {

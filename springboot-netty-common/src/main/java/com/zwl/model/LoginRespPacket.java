@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 /**
  * @author ZhaoWeiLong
  * @since 2021/7/30
- **/
+ */
 @EqualsAndHashCode(callSuper = false)
 @Data
 public class LoginRespPacket extends Packet {

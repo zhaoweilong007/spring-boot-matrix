@@ -13,17 +13,16 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author ZhaoWeiLong
  * @since 2021/8/20
- **/
+ */
 @Slf4j
 @Sharable
 public class GroupMessageReqHandler extends SimpleChannelInboundHandler<GroupMessageReqPacket> {
 
   public static final GroupMessageReqHandler INSTANCE = new GroupMessageReqHandler();
 
-
   @Override
-  protected void channelRead0(ChannelHandlerContext ctx,
-      GroupMessageReqPacket reqPacket) throws Exception {
+  protected void channelRead0(ChannelHandlerContext ctx, GroupMessageReqPacket reqPacket)
+      throws Exception {
     log.info("【群聊消息】,data:{}", reqPacket);
     ChannelGroup groupMap = LogUtils.getGroupMap(reqPacket.getGroupId());
     if (groupMap == null) {
@@ -38,6 +37,5 @@ public class GroupMessageReqHandler extends SimpleChannelInboundHandler<GroupMes
       respPacket.setFromUser(LogUtils.getSession(ctx.channel()));
       groupMap.writeAndFlush(respPacket);
     }
-
   }
 }

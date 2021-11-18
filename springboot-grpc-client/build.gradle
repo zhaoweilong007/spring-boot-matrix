@@ -1,5 +1,3 @@
-apply plugin: 'org.springframework.boot'  //使用springboot插件
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'net.devh:grpc-client-spring-boot-starter'
