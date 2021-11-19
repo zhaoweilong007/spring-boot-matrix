@@ -11,19 +11,29 @@ server:
 #dubbo配置
 dubbo:
   application:
+    id: ${spring.application.name}
     name: ${spring.application.name}
+    qos-enable: false
+    version: 1.0.0
   registry:
-    address: nacos://${nacos.addr:127.0.0.1:8848}
+    id: ${spring.application.name}-registry
+    address: nacos://127.0.0.1:8848
     username: nacos
     password: nacos
+  config-center:
+    address: nacos://127.0.0.1:8848
+  metadata-report:
+    address: nacos://127.0.0.1:8848
   protocol:
+    id: dubbo
     name: dubbo
-    port: -1
+    port: 20080
   provider:
     timeout: 1000
-    token: true
+    version: 1.0.0
   consumer:
     timeout: 1000
+    version: 1.0.0
 
 #seata配置
 seata:
@@ -43,16 +53,16 @@ seata:
       cluster: default
       application: seata-server
       server-addr: 127.0.0.1:8848
-      namespace: "seata"
-      group: "SEATA_GROUP"
-      username: "nacos"
-      password: "nacos"
+      namespace: seata
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
 #  config:
 #    type: nacos
 #    nacos:
 #      server-addr: 127.0.0.1:8848
-#      namespace: "seata"
-#      group: "SEATA_GROUP"
-#      username: "nacos"
-#      password: "nacos"
+#      namespace: seata
+#      group: service.vgroupMapping.account-service-group
+#      username: nacos
+#      password: nacos
 

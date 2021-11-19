@@ -5,12 +5,12 @@
 <mapper namespace="com.zwl.mapper.OrderMapper">
 
     <resultMap id="BaseResultMap" type="com.zwl.domain.Order">
-        <id property="id" column="id" jdbcType="INTEGER"/>
-        <result property="userId" column="user_id" jdbcType="INTEGER"/>
-        <result property="storageId" column="storage_id" jdbcType="INTEGER"/>
-        <result property="payAmount" column="pay_amount" jdbcType="DOUBLE"/>
-        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="storageId" column="storage_id" jdbcType="INTEGER"/>
+            <result property="payAmount" column="pay_amount" jdbcType="DOUBLE"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">

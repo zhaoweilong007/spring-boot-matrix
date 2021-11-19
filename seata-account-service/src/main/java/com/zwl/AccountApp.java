@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableAutoDataSourceProxy
-@EnableDubbo
+@EnableDubbo(scanBasePackages = "com.zwl")
 @EnableTransactionManagement
 public class AccountApp {
   public static void main(String[] args) {

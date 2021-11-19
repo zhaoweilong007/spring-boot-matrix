@@ -14,7 +14,7 @@ import java.util.Optional;
 
 /** */
 @Service
-@DubboService
+@DubboService(version = "1.0.0",interfaceClass = StorageRpcService.class)
 @Slf4j
 public class StorageServiceImpl extends ServiceImpl<StorageMapper, Storage>
     implements StorageService, StorageRpcService {

@@ -10,7 +10,6 @@ import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -19,9 +18,15 @@ import java.util.Date;
 @Slf4j
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
 
-  @DubboReference private AccountRpcService accountRpcService;
+  @DubboReference(
+      interfaceClass = AccountRpcService.class,
+      version = "1.0.0")
+  private AccountRpcService accountRpcService;
 
-  @DubboReference private StorageRpcService storageRpcService;
+  @DubboReference(
+      interfaceClass = StorageRpcService.class,
+      version = "1.0.0")
+  private StorageRpcService storageRpcService;
 
   /**
    * todo 创建订单分布式事务
@@ -33,14 +38,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
    */
   @Override
   @GlobalTransactional(rollbackFor = Exception.class)
-  @Transactional(rollbackFor = Exception.class)
   public Integer createOrder(Integer userId, Integer storageId, Integer num) {
     Boolean deductStorage = storageRpcService.deductStorage(storageId, num);
     if (!deductStorage) {
       log.error("扣减库存失败");
       return -1;
     }
-    var amount = (double) (num * 10L);
+    var amount = (double) (num * 10);
     Boolean deductBalance = accountRpcService.deductBalance(userId, amount);
     if (!deductBalance) {
       log.warn("扣减余额失败");

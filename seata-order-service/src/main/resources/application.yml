@@ -8,23 +8,51 @@ spring:
     password: 123456
 server:
   port: 8090
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  typeAliasesPackage: com.zwl.domain
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+
 #dubbo配置
 dubbo:
   application:
+    id: ${spring.application.name}
     name: ${spring.application.name}
+    qos-enable: false
+    version: 1.0.0
   registry:
-    address: nacos://${nacos.addr:127.0.0.1:8848}
+    id: ${spring.application.name}-registry
+    address: nacos://127.0.0.1:8848
+    username: nacos
+    password: nacos
+    check: true
+    simplified: true
+  config-center:
+    address: nacos://127.0.0.1:8848
+    check: true
+    username: nacos
+    password: nacos
+  metadata-report:
+    address: nacos://127.0.0.1:8848
     username: nacos
     password: nacos
   protocol:
+    id: dubbo
     name: dubbo
     port: -1
   provider:
     timeout: 1000
-    token: true
+    version: 1.0.0
   consumer:
     timeout: 1000
-
+    version: 1.0.0
+  scan:
+    base-packages: com.zwl
 
 #seata配置
 seata:
@@ -44,7 +72,16 @@ seata:
       cluster: default
       application: seata-server
       server-addr: 127.0.0.1:8848
-      namespace: "seata"
-      group: "SEATA_GROUP"
-      username: "nacos"
-      password: "nacos"
+      namespace: seata
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+#  config:
+#    type: nacos
+#    nacos:
+#      server-addr: 127.0.0.1:8848
+#      namespace: seata
+#      group: service.vgroupMapping.order-service-group
+#      username: nacos
+#      password: nacos
+
