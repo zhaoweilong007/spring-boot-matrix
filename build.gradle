@@ -54,6 +54,7 @@ subprojects {
 
     dependencyManagement {
         dependencies {
+            dependency 'org.springframework.boot:spring-boot-starter-amqp:2.5.6'
             dependency 'org.apache.dubbo:dubbo-registry-nacos:3.0.4'
             dependency 'io.seata:seata-spring-boot-starter:1.4.2'
             dependency "org.apache.shardingsphere:shardingsphere-jdbc-core-spring-boot-starter:5.0.0-beta"
