@@ -6,6 +6,12 @@ spring:
     port: 5672
     username: guest
     password: guest
+    #  开启手动ACK
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
 server:
   port: 9870
 

@@ -6,7 +6,19 @@ spring:
     port: 5672
     username: guest
     password: guest
+    cache:
+      # 当缓存模式设置为CacheMode.CONNECTION时，连接会被缓存起来，createConnection()的调用可能会创建一个新的连接，
+      #也可能从缓存中获取；关闭连接时，如果缓存的连接数没有达到cache size，就会将连接缓存起来。
+      #在这个模式下，由连接创建的channel也会被缓存起来。
+      # CacheMode.CHANNEL模式下，所有的客户端共享一个链接，不同的channel之间相互隔离
+      connection:
+        mode: channel
+      channel:
+        size: 2048
+        checkout-timeout: 3000
+    connection-timeout: 3000
+    publisher-confirm-type: correlated
+    publisher-returns: true
 server:
   port: 9871
-
 
