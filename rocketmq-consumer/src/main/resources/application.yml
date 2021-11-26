@@ -1,0 +1,15 @@
+server:
+  port: 8111
+
+spring:
+  application:
+    name: rocketmq-consumer
+
+rocketmq:
+  consumer:
+    group: my-group
+    enable-msg-trace: true
+    customized-trace-topic: my-trace-topic
+    access-key: AK
+    secret-key: SK
+  name-server: 127.0.0.1:9876

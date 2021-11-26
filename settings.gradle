@@ -18,3 +18,6 @@ include 'seata-account-service'
 include 'seata-dubbo-interface'
 include 'rabbitmq-consumer'
 include 'rabbitmq-provider'
+include 'rocketmq-provider'
+include 'rocketmq-consumer'
+
