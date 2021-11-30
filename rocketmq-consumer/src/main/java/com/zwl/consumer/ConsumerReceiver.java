@@ -1,15 +1,18 @@
 package com.zwl.consumer;
 
+import com.alibaba.fastjson.JSON;
 import com.zwl.model.DemoMessage;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
+import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyStatus;
+import org.apache.rocketmq.client.consumer.listener.MessageListenerOrderly;
+import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.spring.annotation.ConsumeMode;
+import org.apache.rocketmq.spring.annotation.MessageModel;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
-import org.apache.rocketmq.spring.annotation.RocketMQTransactionListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
-import org.apache.rocketmq.spring.core.RocketMQLocalTransactionListener;
-import org.apache.rocketmq.spring.core.RocketMQLocalTransactionState;
-import org.springframework.messaging.Message;
+import org.apache.rocketmq.spring.core.RocketMQReplyListener;
 import org.springframework.stereotype.Component;
 
 /**
@@ -31,23 +34,22 @@ public class ConsumerReceiver {
 
   @RocketMQMessageListener(topic = "test-topic-2", consumerGroup = "${rocketmq.consumer.group}")
   @Component
-  public static class AsyncConsumer implements RocketMQListener<DemoMessage> {
+  public static class AsyncConsumer implements RocketMQListener<MessageExt> {
 
     @Override
-    public void onMessage(DemoMessage message) {
-      log.info("线程：{}，AsyncConsumer-msg:{}", Thread.currentThread().getName(), message);
+    public void onMessage(MessageExt message) {
+      log.info("线程：{}，AsyncConsumer-msg:{}", Thread.currentThread().getName(),
+          JSON.parseObject(message.getBody(), DemoMessage.class));
     }
   }
 
   @RocketMQMessageListener(
       topic = "test-topic-3",
-      consumerGroup = "${rocketmq.consumer.group}",
-      consumeMode = ConsumeMode.ORDERLY)
+      consumerGroup = "${rocketmq.consumer.group}", consumeMode = ConsumeMode.ORDERLY, messageModel = MessageModel.CLUSTERING)
   @Component
-  public static class OrderlyConsumer implements RocketMQListener<DemoMessage> {
-
+  public static class OrderlyConsumer implements RocketMQListener<MessageExt> {
     @Override
-    public void onMessage(DemoMessage message) {
+    public void onMessage(MessageExt message) {
       log.info("线程：{}，OrderlyConsumer-msg:{}", Thread.currentThread().getName(), message);
     }
   }
@@ -62,33 +64,14 @@ public class ConsumerReceiver {
     }
   }
 
-  @RocketMQTransactionListener
+  @RocketMQMessageListener(topic = "test-topic-5", consumerGroup = "${rocketmq.consumer.group}")
   @Component
-  public static class TransactionConsumer implements RocketMQLocalTransactionListener {
+  public static class TransactionConsumer implements RocketMQListener<DemoMessage> {
 
-    /**
-     * 执行本地事务
-     *
-     * @param msg
-     * @param arg
-     * @return
-     */
     @Override
-    public RocketMQLocalTransactionState executeLocalTransaction(Message msg, Object arg) {
-      log.info("invoke executeLocalTransaction msg:{}", msg);
-      return RocketMQLocalTransactionState.UNKNOWN;
-    }
-
-    /**
-     * 检车事务状态
-     *
-     * @param msg
-     * @return
-     */
-    @Override
-    public RocketMQLocalTransactionState checkLocalTransaction(Message msg) {
-      log.info("invoke checkLocalTransaction msg:{}", msg);
-      return RocketMQLocalTransactionState.COMMIT;
+    public void onMessage(DemoMessage message) {
+      log.info("线程：{}，TransactionConsumer-msg:{}", Thread.currentThread().getName(), message);
     }
   }
+
 }

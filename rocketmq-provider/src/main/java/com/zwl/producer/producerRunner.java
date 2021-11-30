@@ -5,7 +5,6 @@ import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.RandomUtil;
 import com.zwl.model.DemoMessage;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -27,7 +26,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class producerRunner implements CommandLineRunner {
 
-  @Autowired RocketMQTemplate rocketMQTemplate;
+  @Autowired
+  RocketMQTemplate rocketMQTemplate;
 
   Snowflake snowflake = new Snowflake(1, 1, true);
 
@@ -45,18 +45,20 @@ public class producerRunner implements CommandLineRunner {
 
     sendSyncMsg.accept(list);
 
-    sendAsyncMsg.accept(list);
-
     sendOrderlyMsg.accept(list);
 
     sendBatchMsg.accept(list);
 
     sendTransactionMsg.accept(list);
 
+    sendAsyncMsg.accept(list);
+
     log.info("=============消息全部发送完成===================");
   }
 
-  /** 发送同步消息 */
+  /**
+   * 发送同步消息
+   */
   Consumer<List<DemoMessage>> sendSyncMsg =
       new Consumer<List<DemoMessage>>() {
         @Override
@@ -69,7 +71,9 @@ public class producerRunner implements CommandLineRunner {
         }
       };
 
-  /** 发送异步消息 */
+  /**
+   * 发送异步消息
+   */
   Consumer<List<DemoMessage>> sendAsyncMsg =
       new Consumer<List<DemoMessage>>() {
         @Override
@@ -79,7 +83,7 @@ public class producerRunner implements CommandLineRunner {
                 demoMessage.setDesc("异步消息");
                 rocketMQTemplate.asyncSend(
                     "test-topic-2",
-                    MessageBuilder.withPayload(demoMessage),
+                    MessageBuilder.withPayload(demoMessage).build(),
                     new SendCallback() {
                       @Override
                       public void onSuccess(SendResult sendResult) {
@@ -95,9 +99,10 @@ public class producerRunner implements CommandLineRunner {
         }
       };
 
-  final Random random = new Random();
 
-  /** 发送顺序消息 */
+  /**
+   * 发送顺序消息
+   */
   Consumer<List<DemoMessage>> sendOrderlyMsg =
       new Consumer<List<DemoMessage>>() {
         AtomicInteger count = new AtomicInteger(0);
@@ -108,11 +113,14 @@ public class producerRunner implements CommandLineRunner {
               demoMessage -> {
                 demoMessage.setDesc("顺序消息" + count.incrementAndGet());
                 rocketMQTemplate.syncSendOrderly(
-                    "test-topic-3", MessageBuilder.withPayload(demoMessage), "hashKey");
+                    "test-topic-3", MessageBuilder.withPayload(demoMessage).build(),
+                    demoMessage.getId().toString());
               });
         }
       };
-  /** 发送批量消息 */
+  /**
+   * 发送批量消息
+   */
   Consumer<List<DemoMessage>> sendBatchMsg =
       new Consumer<List<DemoMessage>>() {
         @Override
