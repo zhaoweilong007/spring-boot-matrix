@@ -20,4 +20,5 @@ include 'rabbitmq-consumer'
 include 'rabbitmq-provider'
 include 'rocketmq-provider'
 include 'rocketmq-consumer'
-
+include 'kafka-consumer'
+include 'kafka-provider'

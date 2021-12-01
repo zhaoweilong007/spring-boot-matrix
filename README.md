@@ -39,7 +39,7 @@ spring-boot与各种框架整合
 
 ## ShardingSphere
 
-## seata
+## seata 
 
 ## rabbitmq
 
@@ -54,5 +54,3 @@ spring-boot与各种框架整合
 ## security
 
 ## security OAuth2
-
-

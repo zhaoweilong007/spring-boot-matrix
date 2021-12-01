@@ -1,0 +1,11 @@
+server:
+  port: 8110
+
+spring:
+  application:
+    name: kafka-producer
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      #激活事务特性
+      transaction-id-prefix: kafka_tx.

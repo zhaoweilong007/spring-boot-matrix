@@ -1,0 +1,10 @@
+server:
+  port: 8111
+
+spring:
+  application:
+    name: kafka-consumer
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+    bootstrap-servers: localhost:9092
