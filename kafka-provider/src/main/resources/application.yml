@@ -9,3 +9,10 @@ spring:
     producer:
       #激活事务特性
       transaction-id-prefix: kafka_tx.
+      #序列化方式
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      #应答
+      acks: 1 #0-不应答 1-leader应答 all-所有leader和follower应答
+      #重试
+      retries: 3

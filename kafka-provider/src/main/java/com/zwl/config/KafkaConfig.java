@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.ByteArraySerializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.GenericApplicationContext;
@@ -20,7 +19,6 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.core.RoutingKafkaTemplate;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.requestreply.ReplyingKafkaTemplate;
-import org.springframework.kafka.support.serializer.JsonSerializer;
 
 /**
  * @author ZhaoWeiLong
@@ -40,36 +38,23 @@ public class KafkaConfig {
 
   @Bean
   public KafkaTemplate<String, Object> kafkaTemplate(
-      ProducerFactory<String, Object> producerFactory) {
-    return new KafkaTemplate<>(producerFactory);
-  }
-
-  @Bean
-  public ProducerFactory<String, Object> producerFactory(Map<String, Object> producerConfigs) {
-    return new DefaultKafkaProducerFactory<>(producerConfigs);
-  }
-
-  @Bean
-  public Map<String, Object> producerConfigs(ProducerFactory<Object, Object> pf) {
-    Map<String, Object> props = new HashMap<>(pf.getConfigurationProperties());
-    props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-    props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-    return props;
+      ProducerFactory<String, Object> pf) {
+    return new KafkaTemplate<String, Object>(pf);
   }
 
 
   @Bean
-  public ReplyingKafkaTemplate<String, String, String> replyingTemplate(
-      ProducerFactory<String, String> producerFactory,
-      ConcurrentMessageListenerContainer<String, String> repliesContainer) {
-    return new ReplyingKafkaTemplate<>(producerFactory, repliesContainer);
+  public ReplyingKafkaTemplate<String, Object, Object> replyingTemplate(
+      ProducerFactory<String, Object> pf,
+      ConcurrentMessageListenerContainer<String, Object> repliesContainer) {
+    return new ReplyingKafkaTemplate<String, Object, Object>(pf, repliesContainer);
   }
 
   @Bean
-  public ConcurrentMessageListenerContainer<String, String> repliesContainer(
-      ConcurrentKafkaListenerContainerFactory<String, String> containerFactory) {
-    ConcurrentMessageListenerContainer<String, String> repliesContainer = containerFactory.createContainer(
-        "kReplies");
+  public ConcurrentMessageListenerContainer<String, Object> repliesContainer(
+      ConcurrentKafkaListenerContainerFactory<String, Object> containerFactory) {
+    ConcurrentMessageListenerContainer<String, Object> repliesContainer = containerFactory.createContainer(
+        "replies");
     repliesContainer.getContainerProperties().setGroupId("repliesGroup");
     repliesContainer.setAutoStartup(false);
     return repliesContainer;

@@ -32,7 +32,7 @@ public class kafkaRunner implements CommandLineRunner {
    * 支持发送/应答的template
    */
   @Autowired
-  ReplyingKafkaTemplate<String, Object, String> replyingKafkaTemplate;
+  ReplyingKafkaTemplate<String, Object, Object> replyingKafkaTemplate;
 
   /**
    * 一个基于主题名称路由消息的KafkaTemplate
