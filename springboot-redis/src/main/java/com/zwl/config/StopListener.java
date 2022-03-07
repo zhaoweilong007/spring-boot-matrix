@@ -8,7 +8,6 @@ import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.data.redis.connection.stream.ObjectRecord;
 import org.springframework.data.redis.stream.StreamMessageListenerContainer;
 import org.springframework.data.redis.stream.Subscription;
-import org.springframework.stereotype.Component;
 
 /**
  * 描述：
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @author zwl
  * @since 2022/3/7 13:53
  **/
-@Component
+//@Component
 @Slf4j
 public class StopListener implements ApplicationListener<ContextClosedEvent> {
 

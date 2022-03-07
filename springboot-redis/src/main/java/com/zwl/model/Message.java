@@ -2,6 +2,7 @@ package com.zwl.model;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.redis.connection.stream.RecordId;
 
 /**
  * 描述：

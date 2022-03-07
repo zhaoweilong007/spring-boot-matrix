@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 @Slf4j
-public class TestConsumer implements StreamListener<String, ObjectRecord<String, Message>> {
+public class TestConsumerA implements StreamListener<String, ObjectRecord<String, Message>> {
 
 
     @Autowired
@@ -24,7 +24,6 @@ public class TestConsumer implements StreamListener<String, ObjectRecord<String,
 
     @Override
     public void onMessage(ObjectRecord<String, Message> message) {
-        log.info("receiver message:{}", message);
-
+        log.info("{} TestConsumerA receiver message:{}", Thread.currentThread().getName(), message);
     }
 }

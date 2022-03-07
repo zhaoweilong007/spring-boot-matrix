@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  * @author zwl
  * @since 2022/3/7 13:52
  **/
-@Component
+//@Component
 @Slf4j
 public class StartListener implements ApplicationListener<ContextRefreshedEvent> {
 
