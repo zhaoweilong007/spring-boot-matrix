@@ -1,11 +1,9 @@
 package com.zwl.consumer;
 
-import com.zwl.model.Message;
+import com.alibaba.fastjson.JSON;
+import com.zwl.model.SMessage;
+import com.zwl.stream.AbstractStreamListener;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.connection.stream.ObjectRecord;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.stream.StreamListener;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,14 +14,12 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 @Slf4j
-public class TestConsumerA implements StreamListener<String, ObjectRecord<String, Message>> {
+public class TestConsumerA extends AbstractStreamListener<SMessage> {
 
-
-    @Autowired
-    StringRedisTemplate stringRedisTemplate;
 
     @Override
-    public void onMessage(ObjectRecord<String, Message> message) {
-        log.info("{} TestConsumerA receiver message:{}", Thread.currentThread().getName(), message);
+    public void onMessage(SMessage message) {
+        log.info("{} TestConsumerA receiver message:{}", Thread.currentThread().getName(), JSON.toJSONString(message));
+
     }
 }
