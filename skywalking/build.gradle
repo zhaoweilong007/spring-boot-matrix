@@ -1,0 +1,11 @@
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    compileOnly 'org.apache.skywalking:apm-toolkit-opentracing:8.9.0'
+    implementation 'org.apache.skywalking:apm-toolkit-trace:8.9.0'
+    implementation 'org.apache.skywalking:apm-toolkit-logback-1.x:8.9.0'
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("mysql:mysql-connector-java")
+    implementation('org.springframework.boot:spring-boot-starter-data-redis')
+    implementation("com.alibaba:druid-spring-boot-starter")
+}

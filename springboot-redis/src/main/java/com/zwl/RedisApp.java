@@ -63,8 +63,7 @@ public class RedisApp {
 
             LMessage lMessage = new LMessage()
                     .setName("msg=" + i)
-                    .setLists(list)
-                    .setCount(BigDecimal.valueOf(RandomUtil.randomDouble(2, RoundingMode.HALF_UP)));
+                    .setLists(list);
             log.info("send lmessage:{}", JSON.toJSONString(lMessage, true));
             redisTemplate.convertAndSend(lMessage.getChannel(), lMessage);
 
