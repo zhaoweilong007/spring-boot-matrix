@@ -24,3 +24,5 @@ include 'kafka-consumer'
 include 'kafka-provider'
 include 'springboot-redis'
 include 'skywalking'
+include 'sprng-security'
+
