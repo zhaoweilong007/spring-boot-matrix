@@ -25,4 +25,5 @@ include 'kafka-provider'
 include 'springboot-redis'
 include 'skywalking'
 include 'sprng-security'
+include 'springboot-docker'
 

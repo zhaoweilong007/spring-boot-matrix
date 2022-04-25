@@ -1,0 +1,39 @@
+plugins {
+    id 'com.google.cloud.tools.jib' version '3.2.1'
+}
+
+
+ext {
+    set('registryUrl', "registry.cn-hangzhou.aliyuncs.com")
+    set('registryNamespace', "my_docker_dev")
+    set('registryUsername', "冬天从不穿秋裤")
+    set('registryPassword', "*******")
+}
+
+jib {
+    from {
+        image = "adoptopenjdk/openjdk11:jre-nightly"
+    }
+    to {
+        image = "${registryUrl}/${registryNamespace}/${project.name}"
+        tags = ["latest", "${project.version}".toString()]
+        auth {
+            username = "${registryUsername}"
+            password = "${registryPassword}"
+        }
+    }
+    container {
+        /**
+         * 设置jvm的启动参数
+         * user.timezone - 解决Java程序的时区问题
+         */
+        jvmFlags = ['-Duser.timezone=Asia/Shanghai']
+        mainClass = "com.zwl.RedisApp"
+    }
+}
+
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
