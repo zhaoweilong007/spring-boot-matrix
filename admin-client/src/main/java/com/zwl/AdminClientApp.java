@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author zwl
  * @since ${DATE} ${TIME}
- **/
+ */
 @SpringBootApplication
 @RestController
 public class AdminClientApp {
-    public static void main(String[] args) {
-        SpringApplication.run(AdminClientApp.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(AdminClientApp.class, args);
+  }
 
-    @GetMapping
-    public String hello() {
-        return "Hello World";
-    }
+  @GetMapping
+  public String hello() {
+    return "Hello World";
+  }
 }

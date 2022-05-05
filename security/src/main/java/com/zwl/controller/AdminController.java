@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author zwl
  * @since 2022/5/5 14:04
- **/
+ */
 @RestController
 @Slf4j
-public class AdminController {
-
-
-}
+public class AdminController {}

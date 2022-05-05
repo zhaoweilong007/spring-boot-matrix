@@ -7,9 +7,6 @@ import com.zwl.config.FanoutRabbitConfig;
 import com.zwl.config.TopicRabbitConfig;
 import com.zwl.config.headerRabbitConfig;
 import com.zwl.model.DemoMessage;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.AsyncRabbitTemplate;
@@ -21,6 +18,10 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * @author ZhaoWeiLong
  * @since 2021/11/22
@@ -28,14 +29,6 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Component
 @Slf4j
 public class ProviderRunner implements ApplicationRunner {
-
-  @Autowired RabbitTemplate rabbitTemplate;
-
-  @Autowired AsyncRabbitTemplate asyncRabbitTemplate;
-
-  @Autowired MessageConverter messageConverter;
-
-  Snowflake snowflake = new Snowflake(1, 1, true);
 
   final ListenableFutureCallback<Object> callback =
       new ListenableFutureCallback<>() {
@@ -49,6 +42,10 @@ public class ProviderRunner implements ApplicationRunner {
           log.info("消息处理成功：{}", result);
         }
       };
+  @Autowired RabbitTemplate rabbitTemplate;
+  @Autowired AsyncRabbitTemplate asyncRabbitTemplate;
+  @Autowired MessageConverter messageConverter;
+  Snowflake snowflake = new Snowflake(1, 1, true);
 
   @Override
   public void run(ApplicationArguments args) {

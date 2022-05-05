@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
-/** @Entity com.zwl.domain.Storage */
+/**
+ * @Entity com.zwl.domain.Storage
+ */
 @Mapper
 public interface StorageMapper extends BaseMapper<Storage> {
 

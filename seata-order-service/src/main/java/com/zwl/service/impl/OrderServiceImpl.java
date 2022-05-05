@@ -18,14 +18,10 @@ import java.util.Date;
 @Slf4j
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
 
-  @DubboReference(
-      interfaceClass = AccountRpcService.class,
-      version = "1.0.0")
+  @DubboReference(interfaceClass = AccountRpcService.class, version = "1.0.0")
   private AccountRpcService accountRpcService;
 
-  @DubboReference(
-      interfaceClass = StorageRpcService.class,
-      version = "1.0.0")
+  @DubboReference(interfaceClass = StorageRpcService.class, version = "1.0.0")
   private StorageRpcService storageRpcService;
 
   /**

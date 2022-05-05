@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
-/** @Entity com.zwl.domain.User */
+/**
+ * @Entity com.zwl.domain.User
+ */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 

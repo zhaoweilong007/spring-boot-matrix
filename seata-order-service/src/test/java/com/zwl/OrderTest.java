@@ -25,9 +25,8 @@ public class OrderTest {
   @Test
   public void test() {
 
-    final List<Order> list =
-        orderService.list();
-    System.out.println("list="+list);
+    final List<Order> list = orderService.list();
+    System.out.println("list=" + list);
 
     Order order = new Order();
     order.setUserId(1);

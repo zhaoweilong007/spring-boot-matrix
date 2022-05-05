@@ -14,19 +14,23 @@ import java.math.BigDecimal;
  */
 public class SerializerBigDecimal extends JsonSerializer<Object> {
 
-        /**
-         * 将返回的BigDecimal保留两位小数，再返回给前端
-         * @param value
-         * @param jsonGenerator
-         * @param serializerProvider
-         * @throws IOException
-         * @throws JsonProcessingException
-         */
-        @Override
-        public void serialize(Object value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
-            if (value != null) {
-                BigDecimal bigDecimal = new BigDecimal(value.toString()).setScale(2,BigDecimal.ROUND_HALF_UP);
-                jsonGenerator.writeNumber(bigDecimal.toString());
-            }
-        }
+  /**
+   * 将返回的BigDecimal保留两位小数，再返回给前端
+   *
+   * @param value
+   * @param jsonGenerator
+   * @param serializerProvider
+   * @throws IOException
+   * @throws JsonProcessingException
+   */
+  @Override
+  public void serialize(
+      Object value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+      throws IOException, JsonProcessingException {
+    if (value != null) {
+      BigDecimal bigDecimal =
+          new BigDecimal(value.toString()).setScale(2, BigDecimal.ROUND_HALF_UP);
+      jsonGenerator.writeNumber(bigDecimal.toString());
     }
+  }
+}

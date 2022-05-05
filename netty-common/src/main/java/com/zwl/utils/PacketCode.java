@@ -85,7 +85,9 @@ public class PacketCode {
     return null;
   }
 
-  /** @return 获取请求类型 */
+  /**
+   * @return 获取请求类型
+   */
   private static Class<? extends Packet> getRequestType(byte command) {
     Command[] values = Command.values();
     for (Command val : values) {

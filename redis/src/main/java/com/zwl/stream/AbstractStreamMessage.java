@@ -7,14 +7,13 @@ import com.zwl.model.AbstractMessage;
  *
  * @author zwl
  * @since 2022/3/10 9:21
- **/
+ */
 public abstract class AbstractStreamMessage extends AbstractMessage {
 
-
-    /**
-     * 获取streamKey
-     *
-     * @return streamKey
-     */
-    public abstract String getStreamKey();
+  /**
+   * 获取streamKey
+   *
+   * @return streamKey
+   */
+  public abstract String getStreamKey();
 }

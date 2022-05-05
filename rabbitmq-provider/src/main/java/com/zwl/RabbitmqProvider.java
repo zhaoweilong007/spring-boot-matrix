@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 /**
  * @author ZhaoWeiLong
  * @since 2021/11/22
- **/
+ */
 @SpringBootApplication
 @EnableAsync
 @EnableRabbit

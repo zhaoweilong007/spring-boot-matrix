@@ -3,13 +3,13 @@ package com.zwl.consumer;
 import com.rabbitmq.client.Channel;
 import com.zwl.config.RabbitConfig;
 import com.zwl.model.DemoMessage;
-import java.io.IOException;
-import javax.swing.event.ChangeEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 /**
  * DirectReceiverA和DirectReceiverB竞争消费，不会重复消费，A和B并发线程数为一百

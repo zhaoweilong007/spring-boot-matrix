@@ -9,28 +9,33 @@ import org.springframework.stereotype.Component;
 /**
  * @author ZhaoWeiLong
  * @since 2021/12/3
- **/
+ */
 @Component
 @Slf4j
 public class KafkaConsumer {
 
+  public static final String GROUP_PREFIX = "kafkaConsumer-group-";
 
   @Value("${spring.application.name}")
   private String appname;
 
-  public static final String GROUP_PREFIX = "kafkaConsumer-group-";
-
-  @KafkaListener(topics = {"test-topic-1"}, groupId = GROUP_PREFIX + "test-topic-A")
+  @KafkaListener(
+      topics = {"test-topic-1"},
+      groupId = GROUP_PREFIX + "test-topic-A")
   public void receiverTestTopic1A(DemoMessage demoMessage) {
-    log.info("invoke receiverTestTopic1A threadID:{},msg:{}", Thread.currentThread().getId(),
+    log.info(
+        "invoke receiverTestTopic1A threadID:{},msg:{}",
+        Thread.currentThread().getId(),
         demoMessage);
   }
 
-  @KafkaListener(topics = {"test-topic-1"}, groupId = GROUP_PREFIX + "test-topic-B")
+  @KafkaListener(
+      topics = {"test-topic-1"},
+      groupId = GROUP_PREFIX + "test-topic-B")
   public void receiverTestTopic1B(DemoMessage demoMessage) {
-    log.info("invoke receiverTestTopic1B threadID:{},msg:{}", Thread.currentThread().getId(),
+    log.info(
+        "invoke receiverTestTopic1B threadID:{},msg:{}",
+        Thread.currentThread().getId(),
         demoMessage);
   }
-
-
 }

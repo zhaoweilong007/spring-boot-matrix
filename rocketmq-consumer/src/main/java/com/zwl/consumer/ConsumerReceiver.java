@@ -2,18 +2,15 @@ package com.zwl.consumer;
 
 import com.alibaba.fastjson.JSON;
 import com.zwl.model.DemoMessage;
-import java.util.List;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
-import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyStatus;
-import org.apache.rocketmq.client.consumer.listener.MessageListenerOrderly;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.spring.annotation.ConsumeMode;
 import org.apache.rocketmq.spring.annotation.MessageModel;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
-import org.apache.rocketmq.spring.core.RocketMQReplyListener;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @author ZhaoWeiLong
@@ -38,14 +35,18 @@ public class ConsumerReceiver {
 
     @Override
     public void onMessage(MessageExt message) {
-      log.info("线程：{}，AsyncConsumer-msg:{}", Thread.currentThread().getName(),
+      log.info(
+          "线程：{}，AsyncConsumer-msg:{}",
+          Thread.currentThread().getName(),
           JSON.parseObject(message.getBody(), DemoMessage.class));
     }
   }
 
   @RocketMQMessageListener(
       topic = "test-topic-3",
-      consumerGroup = "${rocketmq.consumer.group}", consumeMode = ConsumeMode.ORDERLY, messageModel = MessageModel.CLUSTERING)
+      consumerGroup = "${rocketmq.consumer.group}",
+      consumeMode = ConsumeMode.ORDERLY,
+      messageModel = MessageModel.CLUSTERING)
   @Component
   public static class OrderlyConsumer implements RocketMQListener<MessageExt> {
     @Override
@@ -73,5 +74,4 @@ public class ConsumerReceiver {
       log.info("线程：{}，TransactionConsumer-msg:{}", Thread.currentThread().getName(), message);
     }
   }
-
 }

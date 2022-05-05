@@ -10,19 +10,19 @@ import java.io.Serializable;
  *
  * @author zwl
  * @since 2022/3/11 14:08
- **/
+ */
 @Entity
 @Table(name = "record")
 @Data
 public class Record implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "jdbc")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "jdbc")
+  private Long id;
 
-    private String label;
+  private String label;
 
-    private String name;
+  private String name;
 
-    private Integer sort;
+  private Integer sort;
 }

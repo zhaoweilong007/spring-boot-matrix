@@ -9,7 +9,9 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/** @TableName user */
+/**
+ * @TableName user
+ */
 @TableName(value = "user")
 @Data
 public class User implements Serializable {

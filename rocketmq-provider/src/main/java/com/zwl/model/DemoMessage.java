@@ -1,12 +1,13 @@
 package com.zwl.model;
 
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * @author ZhaoWeiLong
  * @since 2021/11/22
- **/
+ */
 @Data
 public class DemoMessage implements Serializable {
 

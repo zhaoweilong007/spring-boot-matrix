@@ -9,11 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author zwl
  * @since ${DATE} ${TIME}
- **/
+ */
 @SpringBootApplication
 @EnableAdminServer
 public class AdminServerApp {
-    public static void main(String[] args) {
-        SpringApplication.run(AdminServerApp.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(AdminServerApp.class, args);
+  }
 }

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
  *
  * @author zwl
  * @since 2022/3/11 14:07
- **/
+ */
 @Repository
-public interface RecordRepository extends JpaRepository<Record, Long> {
-}
+public interface RecordRepository extends JpaRepository<Record, Long> {}

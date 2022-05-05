@@ -11,15 +11,16 @@ import org.springframework.stereotype.Component;
  *
  * @author zwl
  * @since 2022/3/7 10:54
- **/
+ */
 @Component
 @Slf4j
 public class TestConsumerB extends AbstractStreamListener<SMessage> {
 
-
-    @Override
-    public void onMessage(SMessage message) {
-        log.info("{} TestConsumerB receiver message:{}", Thread.currentThread().getName(), JSON.toJSONString(message));
-
-    }
+  @Override
+  public void onMessage(SMessage message) {
+    log.info(
+        "{} TestConsumerB receiver message:{}",
+        Thread.currentThread().getName(),
+        JSON.toJSONString(message));
+  }
 }

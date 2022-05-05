@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author ZhaoWeiLong
  * @since 2021/11/30
- **/
+ */
 @RocketMQTransactionListener
 @Slf4j
 @Component

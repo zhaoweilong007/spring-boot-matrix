@@ -12,19 +12,18 @@ import java.util.ArrayList;
  *
  * @author zwl
  * @since 2022/3/10 15:18
- **/
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Accessors(chain = true)
 public class LMessage extends AbstractChannelMessage {
 
-    String name;
+  String name;
 
-    ArrayList<String> lists;
+  ArrayList<String> lists;
 
-
-    @Override
-    public String getChannel() {
-        return "queueA";
-    }
+  @Override
+  public String getChannel() {
+    return "queueA";
+  }
 }

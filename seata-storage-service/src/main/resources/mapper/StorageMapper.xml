@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zwl.mapper.StorageMapper">
-
     <resultMap id="BaseResultMap" type="com.zwl.domain.Storage">
         <id property="id" column="id" jdbcType="INTEGER"/>
         <result property="stock" column="stock" jdbcType="INTEGER"/>
@@ -11,6 +10,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,stock,update_time
+        id,
+        stock,
+        update_time
     </sql>
 </mapper>

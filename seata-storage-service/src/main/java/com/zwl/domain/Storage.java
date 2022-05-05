@@ -9,7 +9,9 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/** @TableName storage */
+/**
+ * @TableName storage
+ */
 @TableName(value = "storage")
 @Data
 public class Storage implements Serializable {

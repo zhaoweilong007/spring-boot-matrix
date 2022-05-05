@@ -3,7 +3,6 @@ package com.zwl.pubsub;
 import cn.hutool.core.util.ClassUtil;
 import cn.hutool.core.util.ReflectUtil;
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.parser.Feature;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.springframework.data.redis.connection.Message;
@@ -17,39 +16,37 @@ import org.springframework.data.redis.listener.Topic;
  *
  * @author zwl
  * @since 2022/3/10 9:11
- **/
-public abstract class AbstractChannelListener<M extends AbstractChannelMessage> implements MessageListener {
+ */
+public abstract class AbstractChannelListener<M extends AbstractChannelMessage>
+    implements MessageListener {
 
-    @Getter
-    private String channel;
+  @Getter private String channel;
 
-    private Class<?> type;
+  private Class<?> type;
 
-    public AbstractChannelListener() {
-        Class<?> aClass = ClassUtil.getTypeArgument(getClass(), 0);
-        this.type = aClass;
-        M m = ((M) ReflectUtil.newInstance(aClass));
-        this.channel = m.getChannel();
-    }
+  public AbstractChannelListener() {
+    Class<?> aClass = ClassUtil.getTypeArgument(getClass(), 0);
+    this.type = aClass;
+    M m = ((M) ReflectUtil.newInstance(aClass));
+    this.channel = m.getChannel();
+  }
 
+  public abstract Topic getTopic();
 
-    public abstract Topic getTopic();
+  protected Topic channelTopic() {
+    return new ChannelTopic(channel);
+  }
 
+  protected Topic patterTopic() {
+    return new PatternTopic(channel);
+  }
 
-    protected Topic channelTopic() {
-        return new ChannelTopic(channel);
-    }
+  @Override
+  @SneakyThrows
+  public void onMessage(Message message, byte[] pattern) {
+    M m = ((M) JSON.parseObject(message.getBody(), type));
+    this.onMessage(m);
+  }
 
-    protected Topic patterTopic() {
-        return new PatternTopic(channel);
-    }
-
-    @Override
-    @SneakyThrows
-    public void onMessage(Message message, byte[] pattern) {
-        M m = ((M) JSON.parseObject(message.getBody(), type));
-        this.onMessage(m);
-    }
-
-    public abstract void onMessage(M message);
+  public abstract void onMessage(M message);
 }

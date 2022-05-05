@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /** */
 @Service
-@DubboService(version = "1.0.0",interfaceClass =AccountRpcService.class )
+@DubboService(version = "1.0.0", interfaceClass = AccountRpcService.class)
 @Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     implements UserService, AccountRpcService {
