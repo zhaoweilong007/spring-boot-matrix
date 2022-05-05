@@ -1,5 +1,5 @@
 dependencies {
     implementation('net.devh:grpc-server-spring-boot-starter')
-    implementation(project(":springboot-grpc-interface"))
+    implementation(project(":grpc-interface"))
     implementation('org.springframework.boot:spring-boot-starter-web')
 }

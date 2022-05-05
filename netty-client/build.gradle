@@ -1,4 +1,4 @@
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
-    implementation(project(":springboot-netty-common"))
+    implementation(project(":netty-common"))
 }
