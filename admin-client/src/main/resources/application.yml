@@ -1,0 +1,23 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' # include all endpoints
+
+spring:
+  application:
+    name: admin-client
+  security:
+    user:
+      name: admin
+      password: admin
+  boot:
+    admin:
+      client:
+        enabled: true
+        url: http://localhost:8888
+        instance:
+          name: admin-client
+          service-url: http://localhost:9999
+server:
+  port: 9999

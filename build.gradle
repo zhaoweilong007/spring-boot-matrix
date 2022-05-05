@@ -66,7 +66,10 @@ subprojects {
 
     dependencyManagement {
         dependencies {
-            dependency 'org.springframework.boot:spring-boot-starter-security:2.6.5'
+            dependency "de.codecentric:spring-boot-admin-starter-server:${springBootVersion}"
+            dependency "de.codecentric:spring-boot-admin-starter-client:${springBootVersion}"
+            dependency "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+            dependency "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
             dependency 'org.apache.rocketmq:rocketmq-spring-boot-starter:2.2.1'
             dependency "org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}"
             dependency 'org.apache.dubbo:dubbo-registry-nacos:3.0.4'
