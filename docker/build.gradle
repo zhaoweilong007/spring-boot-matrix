@@ -4,24 +4,32 @@ plugins {
 
 
 ext {
+    //阿里云仓库地址
     set('registryUrl', "registry.cn-hangzhou.aliyuncs.com")
+    //阿里云仓库名
     set('registryNamespace', "my_docker_dev")
+    //阿里云仓库用户名及密码
     set('registryUsername', "冬天从不穿秋裤")
     set('registryPassword', "*******")
 }
-
+// 使用jib插件自动构建镜像并上传到阿里云
 jib {
     from {
         image = "adoptopenjdk/openjdk11:jre-nightly"
     }
+
+    //推送的目标镜像仓库地址
     to {
         image = "${registryUrl}/${registryNamespace}/${project.name}"
+        //镜像tag
         tags = ["latest", "${project.version}".toString()]
+        //身份认证信息
         auth {
             username = "${registryUsername}"
             password = "${registryPassword}"
         }
     }
+    //镜像容器的配置信息
     container {
         /**
          * 设置jvm的启动参数

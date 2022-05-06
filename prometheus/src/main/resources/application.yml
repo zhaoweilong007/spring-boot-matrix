@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: prometheusApp
+server:
+  port: 8787
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+metrics:
+  tags: # 通用标签
+    application: ${spring.application.name}

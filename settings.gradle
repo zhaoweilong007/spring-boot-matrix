@@ -28,4 +28,4 @@ include 'security'
 include 'docker'
 include 'admin-server'
 include 'admin-client'
-
+include 'prometheus'
