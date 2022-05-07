@@ -10,7 +10,3 @@ management:
     web:
       exposure:
         include: '*'
-
-metrics:
-  tags: # 通用标签
-    application: ${spring.application.name}

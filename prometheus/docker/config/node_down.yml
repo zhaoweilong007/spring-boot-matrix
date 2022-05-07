@@ -1,0 +1,31 @@
+groups:
+  - name: node_down
+    rules:
+      - alert: InstanceDown
+        expr: up == 0
+        for: 1m
+        labels:
+          user: test
+        annotations:
+          summary: "Instance {{ $labels.instance }} down"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minutes."
+      - alert: demo-rule-01 # 告警名称
+        expr: up{job="prometheus"} < 2 # 告警条件
+        for: 1m # 查询时间间隔
+        labels:
+          severity: critical # 告警级别
+        annotations: # 注释，用于完善告警详情
+          summary: "{{$labels.job}}: 示例提示" # 概要
+          description: "示例描述" # 描述
+      - alert: app_down
+        expr: up{job="prometheusApp"} == 0
+        for: 10s
+        annotations:
+          summary: "订单服务已下线，请检查！！"
+      # 10分钟内下单失败率是否大于10
+      - alert: order-error-rate-high
+        expr: sum(rate(request_error_count_total{job="prometheusApp"}[10m]))/sum(rate(order_count_total{job="prometheusApp"}[10m])) * 100 >10
+        for: 10s
+        annotations:
+          summary: "订单服务下单失败率高于10%"
+          description: "订单服务下单失败率高于10%,当前值：{{$value}},尽快处理！！"
