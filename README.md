@@ -6,19 +6,20 @@ spring-boot与各种框架整合
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [spring-boot-matrix](#spring-boot-matrix)
-    - [netty](#netty)
-    - [grpc](#grpc)
-    - [dubbo](#dubbo)
-    - [elastic search](#elastic-search)
-    - [mongoDB](#mongodb)
-    - [multiDatasource](#multidatasource)
-    - [ShardingSphere](#shardingsphere)
-    - [seata](#seata)
-    - [rabbitmq](#rabbitmq)
-    - [rocketmq](#rocketmq)
-    - [kafka](#kafka)
-    - [SkyWalking](#SkyWalking)
+- [netty](#netty)
+- [grpc](#grpc)
+- [dubbo](#dubbo)
+- [elastic search](#elastic-search)
+- [mongoDB](#mongodb)
+- [multiDatasource](#multidatasource)
+- [ShardingSphere](#shardingsphere)
+- [seata](#seata)
+- [rabbitmq](#rabbitmq)
+- [rocketmq](#rocketmq)
+- [kafka](#kafka)
+- [SkyWalking](#skywalking)
+- [docker](#docker)
+- [prometheus](#prometheus)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -93,3 +94,11 @@ spring-boot与各种框架整合
 ## SkyWalking
 
 > 基于SkyWalking实现链路追踪功能
+
+## docker
+
+> springboot与docker集成，自动打包上传镜像
+
+## prometheus
+
+> prometheus+grafana实现监控功能
