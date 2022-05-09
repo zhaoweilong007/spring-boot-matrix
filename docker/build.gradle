@@ -12,6 +12,15 @@ ext {
     set('registryUsername', "冬天从不穿秋裤")
     set('registryPassword', "*******")
 }
+//写法一，读取全局的gradle.properties配置或者通过命令行参数-Pdocker_repo_username= 传递
+def dockerUserName = project.properties['docker_repo_username']
+def dockerPassWord = project.properties['docker_repo_password']
+
+
+//写法二，通过命令行参数-Pdocker_repo_username= 传递
+//def dockerUserName = project.findProperty('docker_repo_username')
+//def dockerPassWord = project.findProperty("docker_repo_password")
+
 // 使用jib插件自动构建镜像并上传到阿里云
 jib {
     from {
@@ -25,8 +34,8 @@ jib {
         tags = ["latest", "${project.version}".toString()]
         //身份认证信息
         auth {
-            username = "${registryUsername}"
-            password = "${registryPassword}"
+            username = dockerUserName
+            password = dockerPassWord
         }
     }
     //镜像容器的配置信息
@@ -44,4 +53,12 @@ jib {
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+//打印docker 配置
+task("dockerConfig") {
+    doLast {
+        println dockerUserName
+        println dockerPassWord
+    }
 }
