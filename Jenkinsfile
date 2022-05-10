@@ -1,52 +1,19 @@
-final String jenkinsContainerImageBuildArgs =
-'--build-arg HOST_UID=$UID --build-arg HOST_GID=$UID --build-arg HOST_TZ=$TZ --build-arg HOST_DOCKER_VERSION=$(docker version -f \'{{.Server.Version}}\') '
-
 pipeline {
-    agent {
-        dockerfile {
-          label 'docker'
-          filename 'Jenkins.Dockerfile'
-          //  Always attempt to pull a newer version of the base image using '--pull'.
-          additionalBuildArgs jenkinsContainerImageBuildArgs + ' --pull'
-          // reuseNode true
-        }
-    }
+    agent any
     stages{
-        stage('Checkout'){
-            steps{
-                step([$class: 'StashNotifier'])
-                checkout scm
-            }
-        }
         stage('Build') {
             steps {
-                 sh './gradlew clean build -x test'
-            }
-        }
-        stage('Test') {
-            steps {
-                 sh './gradlew test'
+                 sh './gradlew clean generateProto'
+                 sh './gradlew build -x test'
             }
         }
         stage('Publish-release') {
+        environment {
+                               BITBUCKET_COMMON_CREDS = credentials('publisherID')
+                           }
            steps {
-             withCredentials([usernamePassword(credentialsId: 'publisherID',
-             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                   script {
-                    sh ' ./gradlew jib -Pdocker_repo_username=$USERNAME  -Pdocker.repo.password=$PASSWORD'
-                }
-             }
+                    sh ' ./gradlew jib -Pdocker_repo_username=$BITBUCKET_COMMON_CREDS_USR  -Pdocker.repo.password=$BITBUCKET_COMMON_CREDS_PSW'
            }
-        }
-    }
-    post {
-        always {
-            script {
-                // In Declarative Pipelines, where Jenkins sets currentBuild.result = null for SUCCESS builds,
-                // the current value can be modified via a script.
-                currentBuild.result = currentBuild.result ?: 'SUCCESS'
-            }
-            step([$class: 'StashNotifier'])
-        }
-    }
+           }
+           }
 }
