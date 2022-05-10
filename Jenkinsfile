@@ -32,14 +32,8 @@ pipeline {
            steps {
              withCredentials([usernamePassword(credentialsId: 'publisherID',
              usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-
                    script {
-                    sh 'if [ -z $(git tag -l "v*" --points-at HEAD) ]
-            then ./gradlew jib -Pdocker_repo_username=$USERNAME \
-            -Pdocker.repo.password=$PASSWORD devSnapshot
-            else ./gradlew jib -Pdocker_repo_password=$USERNAME \
-            -Pdocker.repo.password=$PASSWORD final -Prelease.useLastTag=true
-                        fi'
+                    sh ' ./gradlew jib -Pdocker_repo_username=$USERNAME  -Pdocker.repo.password=$PASSWORD'
                 }
              }
            }
