@@ -2,9 +2,6 @@ pipeline {
     agent any
     stages{
         stage('Build') {
-                environment {
-                                       BITBUCKET_COMMON_CREDS = credentials('publisherID')
-                                   }
             steps {
                  sh './gradlew clean generateProto'
                  sh './gradlew build -x test'
