@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment{
+        DOCKER_REGISTER = 'registry.cn-hangzhou.aliyuncs.com'
+        REGISTRY_NAMESPACE='my_docker_dev'
+        IMAGE_NAME='docker'
+    }
     stages{
         stage('Build') {
             steps {
@@ -14,6 +19,15 @@ pipeline {
            steps {
                     sh './gradlew -Pdocker_repo_username=$BITBUCKET_COMMON_CREDS_USR  -Pdocker_repo_password=$BITBUCKET_COMMON_CREDS_PSW'
            }
-           }
-           }
+        }
+         stage("docker-run"){
+                steps{
+                      sh 'docker pull ${DOCKER_REGISTER}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:latest'
+                      sh 'docker stop ${IMAGE_NAME} && docker rm $(IMAGE_NAME)'
+                      sh 'docker run -d -p 8888:8888 --name ${IMAGE_NAME} ${DOCKER_REGISTER}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:latest'
+
+                }
+         }
+
+        }
 }
