@@ -16,6 +16,12 @@ ext {
 def dockerUserName = project.properties['docker_repo_username']
 def dockerPassWord = project.properties['docker_repo_password']
 
+if (dockerUserName == null) {
+    dockerUserName = "username"
+}
+if (dockerPassWord == null) {
+    dockerPassWord = "password"
+}
 
 //写法二，通过命令行参数-Pdocker_repo_username= 传递
 //def dockerUserName = project.findProperty('docker_repo_username')
