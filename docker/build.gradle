@@ -45,7 +45,7 @@ jib {
          * user.timezone - 解决Java程序的时区问题
          */
         jvmFlags = ['-Duser.timezone=Asia/Shanghai']
-        mainClass = "com.zwl.RedisApp"
+        mainClass = "com.zwl.springbootdocker.SpringbootDockerApplication"
     }
 }
 
