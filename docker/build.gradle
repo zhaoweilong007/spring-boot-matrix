@@ -30,7 +30,7 @@ if (dockerPassWord == null) {
 // 使用jib插件自动构建镜像并上传到阿里云
 jib {
     from {
-        image = "adoptopenjdk/openjdk11:jre-nightly"
+        image = "adoptopenjdk/openjdk11:latest"
     }
 
     //推送的目标镜像仓库地址
@@ -52,6 +52,7 @@ jib {
          */
         jvmFlags = ['-Duser.timezone=Asia/Shanghai']
         mainClass = "com.zwl.springbootdocker.SpringbootDockerApplication"
+        ports = ['8888']
     }
 }
 
