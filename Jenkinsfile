@@ -23,9 +23,10 @@ pipeline {
          stage("docker-run"){
                 steps{
                       sh 'docker pull ${DOCKER_REGISTER}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:latest'
-                      sh 'if test ! -z "$(docker ps -q -f name=${IMAGE_NAME})";them \
+                      sh 'if test ! -z "$(docker ps -q -f name=${IMAGE_NAME})";then \
                       echo "容器存在,停止并删除容器" \
-                      docker stop ${IMAGE_NAME} && docker rm ${IMAGE_NAME}'
+                      docker stop ${IMAGE_NAME} && docker rm ${IMAGE_NAME} \
+                      fi'
                       sh 'docker run -d -p 8888:8888 --name ${IMAGE_NAME} ${DOCKER_REGISTER}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:latest'
                 }
          }
