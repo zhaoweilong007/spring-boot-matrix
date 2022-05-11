@@ -24,7 +24,7 @@ pipeline {
                                BITBUCKET_COMMON_CREDS = credentials('publisherID')
                            }
            steps {
-                    sh './gradlew -Pdocker_repo_username=$BITBUCKET_COMMON_CREDS_USR  -Pdocker_repo_password=$BITBUCKET_COMMON_CREDS_PSW'
+                    sh './gradlew -Pdocker_repo_username=$BITBUCKET_COMMON_CREDS_USR  -Pdocker_repo_password=$BITBUCKET_COMMON_CREDS_PSW jib'
            }
         }
          stage("docker-run"){
