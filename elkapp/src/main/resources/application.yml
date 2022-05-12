@@ -3,3 +3,4 @@ spring:
     name: elk-demo
 server:
   port: 8111
+
