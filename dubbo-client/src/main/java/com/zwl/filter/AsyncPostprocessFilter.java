@@ -22,8 +22,10 @@ import org.apache.dubbo.common.utils.StringUtils;
 import org.apache.dubbo.rpc.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 @Activate(group = {CommonConstants.PROVIDER, CommonConstants.CONSUMER})
+@Component
 public class AsyncPostprocessFilter implements Filter, Filter.Listener {
   private static Logger logger = LoggerFactory.getLogger(AsyncPostprocessFilter.class);
 

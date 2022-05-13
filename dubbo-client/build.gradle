@@ -1,9 +1,4 @@
 dependencies {
-    implementation('org.apache.dubbo:dubbo-dependencies-zookeeper:2.7.8') {
-        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
-    }
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.apache.dubbo:dubbo-spring-boot-starter'
     implementation(project(":dubbo-interface"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

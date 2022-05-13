@@ -1,2 +1,16 @@
 tasks.bootJar { enabled = false }
 tasks.jar { enabled = true }
+
+
+dependencies {
+    api ('org.apache.dubbo:dubbo-dependencies-zookeeper:3.0.7'){
+        exclude group: 'log4j', module: 'log4j'
+    }
+    api ('org.apache.dubbo:dubbo-spring-boot-starter') {
+        exclude group: 'log4j', module: 'log4j'
+    }
+    api ('org.apache.curator:curator-x-discovery:5.2.1'){
+        exclude group: 'log4j', module: 'log4j'
+    }
+    api 'org.springframework.boot:spring-boot-starter-web'
+}

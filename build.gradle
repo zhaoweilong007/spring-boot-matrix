@@ -52,7 +52,7 @@ ext {
     druidVersion = '1.2.8'
     dynamicDatasource = '3.4.1'
     commonsMath3Version = '3.6.1'
-    springBootDubboVersion = "3.0.4"
+    springBootDubboVersion = "3.0.7"
     springBootGrpcVersion = "2.12.0.RELEASE"
 }
 
