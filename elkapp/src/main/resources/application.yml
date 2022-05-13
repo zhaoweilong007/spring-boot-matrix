@@ -3,4 +3,7 @@ spring:
     name: elk-demo
 server:
   port: 8111
-
+  tomcat:
+    accesslog:
+      enabled: true
+      check-exists: true

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="access" class="net.logstash.logback.appender.LogstashAccessTcpSocketAppender">
+        <destination>192.168.2.56:5000</destination>
+        <!-- encoder is required -->
+        <encoder class="net.logstash.logback.encoder.LogstashAccessEncoder"/>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="access"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>
