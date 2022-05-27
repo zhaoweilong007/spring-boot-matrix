@@ -1,0 +1,8 @@
+dependencies {
+    implementation 'org.ssssssss:magic-api-spring-boot-starter:2.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'mysql:mysql-connector-java'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'com.alibaba:druid-spring-boot-starter'
+    implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:1.4.2'
+}

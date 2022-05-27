@@ -1,0 +1,30 @@
+server:
+  port: 8080
+magic-api:
+  web: /magic/web
+  resource:
+    type: database
+    table-name: magic_api_file
+    prefix: magic-api
+  backup:
+    enable: true
+    table-name: magic_api_backup
+  banner: false
+  security:
+    username: admin
+    password: admin
+  throw-exception: true
+  thread-pool-executor-size: 20
+  crud:
+    logic-delete-column: deleted
+    logic-delete-value: 0
+  response-code:
+    success: 200
+    invalid: 1230
+    exception: 500
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
