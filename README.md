@@ -4,8 +4,6 @@
 > spring-boot与各种框架整合
 > 适合学习在接触新的框架时使用，可以参考本项目和相关博客一起学习
 
-[//]: # ( Path: CHANGELOG.md
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
@@ -27,6 +25,7 @@
   - [jenkins+docker+jib实现CI/CD](#jenkinsdockerjib%E5%AE%9E%E7%8E%B0cicd)
   - [prometheus](#prometheus)
   - [ELK](#elk)
+  - [ShardingSphere](#shardingsphere-1)
 - [🎈捐赠](#%E6%8D%90%E8%B5%A0)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -72,6 +71,10 @@
 - [grpc-client](/grpc-client)
 - [grpc-interface](/grpc-interface)
 - [grpc-server](/grpc-server)
+
+**博客地址**：
+
+- [grpc入门实践](https://zhaoweilong007.github.io/Java-learning/#/blog/grpc%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5)
 
 ### dubbo
 
@@ -173,7 +176,9 @@
 > Jenkins+docker+jib实现项目自动化构建部署并运行
 
 - 项目地址：[docker](/docker)
-- 博客地址：[Jenkins实践](https://zhaoweilong007.github.io/Java-learning/#/blog/Jenkins%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2)
+-
+
+博客地址：[Jenkins实践](https://zhaoweilong007.github.io/Java-learning/#/blog/Jenkins%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2)
 
 ### prometheus
 
@@ -188,6 +193,13 @@
 
 - 项目地址：[elkapp](/elkapp)
 - 博客地址：[ELK实践](https://zhaoweilong007.github.io/Java-learning/#/blog/elk%E5%AE%9E%E8%B7%B5)
+
+### ShardingSphere
+
+> 基于sharding-jdbc实现数据分库分表功能
+
+- 项目地址：[sharding-jdbc](/sharding-jdbc)
+- 博客地址：[ShardingSphere实践](https://zhaoweilong007.github.io/Java-learning/#/blog/sharding-jdbc%E5%AE%9E%E8%B7%B5)
 
 ## 🎈捐赠
 
