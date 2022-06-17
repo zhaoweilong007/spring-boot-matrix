@@ -29,12 +29,12 @@ allprojects {
 
 // 版本号
 ext {
-    hutoolVersion = '5.7.11'
+    hutoolVersion = '5.8.3'
     guavaVersion = '30.1.1-jre'
     gsonVersion = '2.8.8'
     fastjsonVersion = '1.2.78'
     lonbokVersion = '1.18.20'
-    mybatisPlusVersion = '3.4.3.4'
+    mybatisPlusVersion = '3.5.2'
     druidVersion = '1.2.8'
     dynamicDatasource = '3.4.1'
     commonsMath3Version = '3.6.1'
@@ -60,7 +60,7 @@ subprojects {
             dependency "org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}"
             dependency 'org.apache.dubbo:dubbo-registry-nacos:3.0.4'
             dependency 'io.seata:seata-spring-boot-starter:1.4.2'
-            dependency "org.apache.shardingsphere:shardingsphere-jdbc-core-spring-boot-starter:5.0.0-beta"
+            dependency "org.apache.shardingsphere:shardingsphere-jdbc-core-spring-boot-starter:5.1.1"
             dependency "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
             dependency "org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}"
             dependency "org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}"
@@ -73,7 +73,7 @@ subprojects {
             dependency "com.baomidou:dynamic-datasource-spring-boot-starter:${dynamicDatasource}"
             dependency "com.alibaba:druid-spring-boot-starter:${druidVersion}"
             dependency "org.apache.commons:commons-math3:${commonsMath3Version}"
-            dependency "mysql:mysql-connector-java:8.0.22"
+            dependency "mysql:mysql-connector-java:8.0.29"
         }
     }
 

@@ -4,10 +4,9 @@ server:
 spring:
   application:
     name: shardingSphere
-  shardingsphere:
+  sharding-sphere:
     props:
       sql-show: true
-      sql-simple: true
       executor-size: 200
       check-table-metadata-enabled: true
     enabled: true
@@ -15,13 +14,13 @@ spring:
       names: db0,db1
       db0:
         type: com.zaxxer.hikari.HikariDataSource
-        jdbc-url: jdbc:mysql://localhost:3306/db0?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+        jdbc-url: jdbc:mysql://localhost:3306/db0?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
         driver-class-name: com.mysql.cj.jdbc.Driver
         username: root
         password: 123456
       db1:
         type: com.zaxxer.hikari.HikariDataSource
-        jdbc-url: jdbc:mysql://localhost:3306/db1?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+        jdbc-url: jdbc:mysql://localhost:3306/db1?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
         driver-class-name: com.mysql.cj.jdbc.Driver
         username: root
         password: 123456
