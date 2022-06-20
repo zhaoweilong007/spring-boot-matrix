@@ -31,4 +31,5 @@ include 'admin-client'
 include 'prometheus'
 include 'elkapp'
 include 'magic-api-demo'
+include 'xxl-job'
 

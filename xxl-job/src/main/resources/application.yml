@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: xxl-job-executor
+xxl-job:
+  enable: true
+  adminAddresses: http://localhost:8080/xxl-job-admin
+  accessToken: default_token
+  executorAppName: ${spring.application.name}
+  executorLogPath: ${user.dir}/xxl-job/logs
+  executorLogRetentionDays: 30

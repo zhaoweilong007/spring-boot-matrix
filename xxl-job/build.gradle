@@ -1,0 +1,4 @@
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation 'com.xuxueli:xxl-job-core:2.3.1'
+}
