@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: batch-app
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/spring_batch?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  batch:
+    job:
+      enabled: true
+    jdbc:
+      initialize-schema: always
+      isolation-level-for-create: repeatable_read
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+server:
+  port: 8082

@@ -1,0 +1,6 @@
+2022-06-21 09:53:58 [com.xxl.job.core.thread.JobThread#run]-[133]-[xxl-job, JobThread-3-1655776438143] <br>----------- xxl-job job execute start -----------<br>----------- Param:
+2022-06-21 09:53:58 [com.zwl.job.JobHandlerExecutor#shardingJobHandler]-[52]-[xxl-job, JobThread-3-1655776438143] 分片参数：当前分片序号 = 1, 总分片数 = 2
+2022-06-21 09:53:58 [com.zwl.job.JobHandlerExecutor#shardingJobHandler]-[58]-[xxl-job, JobThread-3-1655776438143] 第 0 片, 忽略
+2022-06-21 09:53:58 [com.zwl.job.JobHandlerExecutor#shardingJobHandler]-[56]-[xxl-job, JobThread-3-1655776438143] 第 1 片, 命中分片开始处理
+2022-06-21 09:53:58 [com.xxl.job.core.thread.JobThread#run]-[179]-[xxl-job, JobThread-3-1655776438143] <br>----------- xxl-job job execute end(finish) -----------<br>----------- Result: handleCode=200, handleMsg = null
+2022-06-21 09:53:58 [com.xxl.job.core.thread.TriggerCallbackThread#callbackLog]-[197]-[xxl-job, executor TriggerCallbackThread] <br>----------- xxl-job job callback finish.

@@ -32,4 +32,5 @@ include 'prometheus'
 include 'elkapp'
 include 'magic-api-demo'
 include 'xxl-job'
+include 'batch'
 

@@ -10,22 +10,22 @@
 
 - [📌 **项目环境**](#-%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83)
 - [🔥项目结构](#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84)
-  - [netty](#netty)
-  - [grpc](#grpc)
-  - [dubbo](#dubbo)
-  - [elastic search](#elastic-search)
-  - [mongoDB](#mongodb)
-  - [multiDatasource](#multidatasource)
-  - [ShardingSphere](#shardingsphere)
-  - [seata](#seata)
-  - [rabbitmq](#rabbitmq)
-  - [rocketmq](#rocketmq)
-  - [kafka](#kafka)
-  - [SkyWalking](#skywalking)
-  - [jenkins+docker+jib实现CI/CD](#jenkinsdockerjib%E5%AE%9E%E7%8E%B0cicd)
-  - [prometheus](#prometheus)
-  - [ELK](#elk)
-  - [ShardingSphere](#shardingsphere-1)
+    - [netty](#netty)
+    - [grpc](#grpc)
+    - [dubbo](#dubbo)
+    - [elastic search](#elastic-search)
+    - [mongoDB](#mongodb)
+    - [multiDatasource](#multidatasource)
+    - [ShardingSphere](#shardingsphere)
+    - [seata](#seata)
+    - [rabbitmq](#rabbitmq)
+    - [rocketmq](#rocketmq)
+    - [kafka](#kafka)
+    - [SkyWalking](#skywalking)
+    - [jenkins+docker+jib实现CI/CD](#jenkinsdockerjib%E5%AE%9E%E7%8E%B0cicd)
+    - [prometheus](#prometheus)
+    - [ELK](#elk)
+    - [xxl-job](#xxl-job)
 - [🎈捐赠](#%E6%8D%90%E8%B5%A0)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -117,9 +117,10 @@
 
 ### ShardingSphere
 
-> 基于ShardingSphere实现数据分库分表功能
+> 基于sharding-jdbc实现数据分库分表功能
 
-项目地址：[shardingsphere](/shardingsphere)
+- 项目地址：[sharding-jdbc](/sharding-jdbc)
+- 博客地址：[ShardingSphere实践](https://zhaoweilong007.github.io/Java-learning/#/blog/sharding-jdbc%E5%AE%9E%E8%B7%B5)
 
 ### seata
 
@@ -194,12 +195,18 @@
 - 项目地址：[elkapp](/elkapp)
 - 博客地址：[ELK实践](https://zhaoweilong007.github.io/Java-learning/#/blog/elk%E5%AE%9E%E8%B7%B5)
 
-### ShardingSphere
+### xxl-job
 
-> 基于sharding-jdbc实现数据分库分表功能
+> XXL-JOB是一个分布式任务调度平台
 
-- 项目地址：[sharding-jdbc](/sharding-jdbc)
-- 博客地址：[ShardingSphere实践](https://zhaoweilong007.github.io/Java-learning/#/blog/sharding-jdbc%E5%AE%9E%E8%B7%B5)
+- 项目地址：[xxl-job](/xxl-job)
+- 博客地址：[XXL-JOB实践](https://zhaoweilong007.github.io/Java-learning/#/blog/xxl-job%E5%AE%9E%E8%B7%B5)
+
+### spring batch
+
+> 使用spring batch实现批量处理功能
+
+- 项目地址：[spring-batch](/batch)
 
 ## 🎈捐赠
 

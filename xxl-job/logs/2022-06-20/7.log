@@ -1,0 +1,11 @@
+2022-06-20 17:53:01 [com.xxl.job.core.thread.JobThread#run]-[133]-[xxl-job, JobThread-5-1655718781318] <br>----------- xxl-job job execute start -----------<br>----------- Param:ipconfig
+2022-06-20 17:53:01 [com.xxl.job.core.handler.impl.GlueJobHandler#execute]-[25]-[xxl-job, JobThread-5-1655718781318] ----------- glue.version:1655718743000 -----------
+2022-06-20 17:53:01 [com.xxl.job.core.thread.JobThread#run]-[204]-[xxl-job, JobThread-5-1655718781318] <br>----------- JobThread Exception:groovy.lang.MissingPropertyException: No such property: log for class: com.zwl.job.DemoJobHandler
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:65)
+	at org.codehaus.groovy.runtime.callsite.GetEffectivePogoPropertySite.getProperty(GetEffectivePogoPropertySite.java:87)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGroovyObjectGetProperty(AbstractCallSite.java:341)
+	at com.zwl.job.DemoJobHandler.execute(Script_ad91d1ef37d3144cdd470504c813cf8e.groovy:22)
+	at com.xxl.job.core.handler.impl.GlueJobHandler.execute(GlueJobHandler.java:26)
+	at com.xxl.job.core.thread.JobThread.run(JobThread.java:166)
+<br>----------- xxl-job job execute end(error) -----------
+2022-06-20 17:53:01 [com.xxl.job.core.thread.TriggerCallbackThread#callbackLog]-[197]-[xxl-job, executor TriggerCallbackThread] <br>----------- xxl-job job callback finish.

@@ -1,0 +1,5 @@
+2022-06-20 17:38:06 [com.xxl.job.core.thread.JobThread#run]-[133]-[xxl-job, JobThread-2-1655717886516] <br>----------- xxl-job job execute start -----------<br>----------- Param:
+2022-06-20 17:38:06 [com.zwl.job.JobHandlerExecutor#jobHandlerExecutor]-[27]-[xxl-job, JobThread-2-1655717886516] simpleJobHandler  run...xxl-job, JobThread-2-1655717886516
+2022-06-20 17:38:12 [com.zwl.job.JobHandlerExecutor#jobHandlerExecutor]-[38]-[xxl-job, JobThread-2-1655717886516] simpleJobHandler end...
+2022-06-20 17:38:12 [com.xxl.job.core.thread.JobThread#run]-[179]-[xxl-job, JobThread-2-1655717886516] <br>----------- xxl-job job execute end(finish) -----------<br>----------- Result: handleCode=200, handleMsg = null
+2022-06-20 17:38:12 [com.xxl.job.core.thread.TriggerCallbackThread#callbackLog]-[197]-[xxl-job, executor TriggerCallbackThread] <br>----------- xxl-job job callback finish.

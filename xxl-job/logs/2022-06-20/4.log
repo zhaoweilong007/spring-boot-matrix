@@ -1,0 +1,57 @@
+2022-06-20 17:33:56 [com.xxl.job.core.thread.JobThread#run]-[133]-[xxl-job, JobThread-4-1655717636413] <br>----------- xxl-job job execute start -----------<br>----------- Param:ipconfig
+2022-06-20 17:33:56 [com.zwl.job.JobHandlerExecutor#commandJobHandler]-[69]-[xxl-job, JobThread-4-1655717636413] commandJobHandler  run...xxl-job, JobThread-4-1655717636413
+2022-06-20 17:33:56 [com.zwl.job.JobHandlerExecutor#commandJobHandler]-[71]-[xxl-job, JobThread-4-1655717636413] commandJobHandler param:ipconfig
+2022-06-20 17:33:56 [com.zwl.job.JobHandlerExecutor#commandJobHandler]-[73]-[xxl-job, JobThread-4-1655717636413] commandJobHandler result:
+Windows IP 配置
+
+
+以太网适配器 vEthernet (Default Switch):
+
+   连接特定的 DNS 后缀 . . . . . . . : 
+   本地链接 IPv6 地址. . . . . . . . : fe80::d074:28:779b:5d03%19
+   IPv4 地址 . . . . . . . . . . . . : 192.168.96.1
+   子网掩码  . . . . . . . . . . . . : 255.255.240.0
+   默认网关. . . . . . . . . . . . . : 
+
+以太网适配器 vEthernet (WSL):
+
+   连接特定的 DNS 后缀 . . . . . . . : 
+   本地链接 IPv6 地址. . . . . . . . : fe80::892a:6e41:f767:e42e%36
+   IPv4 地址 . . . . . . . . . . . . : 172.19.112.1
+   子网掩码  . . . . . . . . . . . . : 255.255.240.0
+   默认网关. . . . . . . . . . . . . : 
+
+以太网适配器 以太网:
+
+   连接特定的 DNS 后缀 . . . . . . . : 
+   本地链接 IPv6 地址. . . . . . . . : fe80::e9de:745e:8ea7:5958%8
+   IPv4 地址 . . . . . . . . . . . . : 192.168.2.100
+   子网掩码  . . . . . . . . . . . . : 255.255.255.0
+   默认网关. . . . . . . . . . . . . : 192.168.2.1
+
+以太网适配器 VirtualBox Host-Only Network:
+
+   连接特定的 DNS 后缀 . . . . . . . : 
+   本地链接 IPv6 地址. . . . . . . . : fe80::c17a:61df:e138:50c0%12
+   IPv4 地址 . . . . . . . . . . . . : 192.168.56.1
+   子网掩码  . . . . . . . . . . . . : 255.255.255.0
+   默认网关. . . . . . . . . . . . . : 
+
+以太网适配器 VMware Network Adapter VMnet1:
+
+   连接特定的 DNS 后缀 . . . . . . . : 
+   本地链接 IPv6 地址. . . . . . . . : fe80::6d17:2ad0:e666:20a3%3
+   自动配置 IPv4 地址  . . . . . . . : 169.254.32.163
+   子网掩码  . . . . . . . . . . . . : 255.255.0.0
+   默认网关. . . . . . . . . . . . . : 
+
+以太网适配器 VMware Network Adapter VMnet8:
+
+   连接特定的 DNS 后缀 . . . . . . . : 
+   本地链接 IPv6 地址. . . . . . . . : fe80::b934:365c:e842:90e6%21
+   自动配置 IPv4 地址  . . . . . . . : 169.254.144.230
+   子网掩码  . . . . . . . . . . . . : 255.255.0.0
+   默认网关. . . . . . . . . . . . . : 
+
+2022-06-20 17:33:56 [com.xxl.job.core.thread.JobThread#run]-[179]-[xxl-job, JobThread-4-1655717636413] <br>----------- xxl-job job execute end(finish) -----------<br>----------- Result: handleCode=200, handleMsg = null
+2022-06-20 17:33:56 [com.xxl.job.core.thread.TriggerCallbackThread#callbackLog]-[197]-[xxl-job, executor TriggerCallbackThread] <br>----------- xxl-job job callback finish.
