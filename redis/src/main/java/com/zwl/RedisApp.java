@@ -1,7 +1,7 @@
 package com.zwl;
 
 import cn.hutool.core.util.RandomUtil;
-import com.alibaba.fastjson.JSON;
+import cn.hutool.extra.spring.EnableSpringUtil;
 import com.zwl.model.LMessage;
 import com.zwl.model.SMessage;
 import lombok.extern.slf4j.Slf4j;
@@ -30,44 +30,28 @@ import java.util.stream.Stream;
 @SpringBootApplication
 @EnableScheduling
 @Slf4j
+@EnableSpringUtil
 public class RedisApp {
 
-  @Autowired RedisTemplate<String, Object> redisTemplate;
+    @Autowired
+    RedisTemplate<String, Object> redisTemplate;
 
-  public static void main(String[] args) {
-    SpringApplication.run(RedisApp.class, args);
-  }
-
-  @Scheduled(fixedRate = 1000 * 20)
-  public void sendMessage() {
-    log.info(">>>>>>>>>>>>>>>>>>>start send message<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-    StreamOperations<String, Object, Object> opsForStream = redisTemplate.opsForStream();
-    for (int i = 0; i < 5; i++) {
-      ArrayList<String> list =
-          Stream.generate(() -> RandomUtil.randomString(5))
-              .limit(10)
-              .collect(Collectors.toCollection(ArrayList::new));
-
-      SMessage message =
-          new SMessage()
-              .setSenderId((long) i)
-              .setReceiverId(RandomUtil.randomLong())
-              .setContent(RandomUtil.randomString(10))
-              .setCount(new BigDecimal("10.1222"))
-              .setLists(list)
-              .addHeader("headerKey", "val");
-      ObjectRecord<String, SMessage> objectRecord =
-          StreamRecords.newRecord()
-              .ofObject(message)
-              .withStreamKey(message.getStreamKey())
-              .withId(RecordId.autoGenerate());
-      RecordId recordId = opsForStream.add(objectRecord);
-
-      LMessage lMessage = new LMessage().setName("msg=" + i).setLists(list);
-      log.info("send lmessage:{}", JSON.toJSONString(lMessage, true));
-      redisTemplate.convertAndSend(lMessage.getChannel(), lMessage);
-
-      //            log.info("send message recordId:{} message:{}", recordId, message);
+    public static void main(String[] args) {
+        SpringApplication.run(RedisApp.class, args);
     }
-  }
+
+    @Scheduled(fixedRate = 1000 * 20)
+    public void sendMessage() {
+        log.info(">>>>>>>>>>>>>>>>>>>start send message<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        StreamOperations<String, Object, Object> opsForStream = redisTemplate.opsForStream();
+        for (int i = 0; i < 5; i++) {
+            ArrayList<String> list = Stream.generate(() -> RandomUtil.randomString(5)).limit(10).collect(Collectors.toCollection(ArrayList::new));
+            SMessage message = new SMessage().setSenderId((long) i).setReceiverId(RandomUtil.randomLong()).setContent(RandomUtil.randomString(10)).setCount(new BigDecimal("10.1222")).setLists(list).addHeader("headerKey", "val");
+            ObjectRecord<String, SMessage> objectRecord = StreamRecords.newRecord().ofObject(message).withStreamKey(message.getStreamKey()).withId(RecordId.autoGenerate());
+            RecordId recordId = opsForStream.add(objectRecord);
+            LMessage lMessage = new LMessage().setName("msg=" + i).setLists(list);
+            redisTemplate.convertAndSend(lMessage.getChannel(), lMessage);
+            log.info("send message recordId:{}", recordId);
+        }
+    }
 }

@@ -3,5 +3,5 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-redis')
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation group: 'org.apache.commons', name: 'commons-pool2', version: '2.11.1'
-
+    implementation 'org.redisson:redisson-spring-boot-starter:3.17.4'
 }

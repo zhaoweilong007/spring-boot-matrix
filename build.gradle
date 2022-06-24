@@ -82,6 +82,7 @@ subprojects {
         implementation "com.google.guava:guava:${guavaVersion}"
         implementation "com.google.code.gson:gson:${gsonVersion}"
         implementation "com.alibaba.fastjson2:fastjson2:${fastjsonVersion}"
+        implementation "com.alibaba:fastjson:${fastjsonVersion}"
         implementation "org.projectlombok:lombok:${lonbokVersion}"
         annotationProcessor "org.projectlombok:lombok:${lonbokVersion}"
         testAnnotationProcessor "org.projectlombok:lombok:${lonbokVersion}"
