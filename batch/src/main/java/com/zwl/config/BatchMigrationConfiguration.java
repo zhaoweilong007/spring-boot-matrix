@@ -58,14 +58,14 @@ public class BatchMigrationConfiguration {
                                     WriteAnswerListener writeAnswerListener,
                                     ItemAnswerProcess itemAnswerProcess) {
         return this.stepBuilderFactory.get("answerMigrationStep")
-                .<Map<Integer, List<Answer>>, List<Answer>>chunk(10)
+                .<Map<Integer, List<Answer>>, List<Answer>>chunk(2)
                 .reader(multiResourceItemReader)
                 .listener(readAnswerListener)
                 .processor(itemAnswerProcess)
                 .writer(repositoryItemWriter)
                 .listener(writeAnswerListener)
                 //开启多线程处理
-                .taskExecutor(new SimpleAsyncTaskExecutor("spring-batch-answer-migration"))
+                //.taskExecutor(new SimpleAsyncTaskExecutor("spring-batch-answer-migration"))
                 .build();
     }
 
