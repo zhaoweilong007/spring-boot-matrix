@@ -33,4 +33,6 @@ include 'elkapp'
 include 'magic-api-demo'
 include 'xxl-job'
 include 'batch'
+include 'tio-websocket-demo'
+include 'websocket'
 
